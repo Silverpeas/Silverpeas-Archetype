@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><archetype-descriptor name="hyperlink">
+  <modules>
+    <module id="${rootArtifactId}-jar" dir="__rootArtifactId__-jar" name="${rootArtifactId}-jar">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module id="${rootArtifactId}-war" dir="__rootArtifactId__-war" name="${rootArtifactId}-war">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/webapp</directory>
+          <includes>
+            <include>**/*.jsp</include>
+            <include>**/*.xml</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module id="${rootArtifactId}-config" dir="__rootArtifactId__-config" name="${rootArtifactId}-config">
+      <fileSets>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/config</directory>
+          <includes>
+            <include>**/*.xml</include>
+            <include>**/*.properties</include>
+            <include>**/*.txt</include>
+            <include>**/*.sql</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+  </modules>
+</archetype-descriptor>

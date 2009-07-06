@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><archetype>
+  <id>hyperlink</id>
+  <resources>
+    <resource>hyperlink-config\pom.xml</resource>
+    <resource>hyperlink-config\src\main\config\properties\com\silverpeas\hyperlink\multilang\hyperlinkBundle.properties</resource>
+    <resource>hyperlink-config\src\main\config\properties\com\silverpeas\hyperlink\multilang\hyperlinkBundle_en.properties</resource>
+    <resource>hyperlink-config\src\main\config\properties\com\silverpeas\hyperlink\multilang\hyperlinkBundle_fr.properties</resource>
+    <resource>hyperlink-config\src\main\config\properties\com\silverpeas\hyperlink\settings\hyperlinkSettings.properties</resource>
+    <resource>hyperlink-config\src\main\config\dbRepository\data\mssql\hyperlink-contribution.xml</resource>
+    <resource>hyperlink-config\src\main\config\dbRepository\data\oracle\hyperlink-contribution.xml</resource>
+    <resource>hyperlink-config\src\main\config\dbRepository\data\postgres\hyperlink-contribution.xml</resource>
+    <resource>hyperlink-config\src\main\config\silvertrace\hyperlinkModule.properties</resource>
+    <resource>hyperlink-config\src\main\config\silvertrace\messages\hyperlinkMessages_en.properties</resource>
+    <resource>hyperlink-config\src\main\config\silvertrace\messages\hyperlinkMessages_fr.properties</resource>
+    <resource>hyperlink-config\src\main\config\xmlcomponents\hyperlink.xml</resource>
+    <resource>hyperlink-jar\pom.xml</resource>
+    <resource>hyperlink-jar\src\main\java\com\stratelia\webactiv\hyperlink\HyperlinkException.java</resource>
+    <resource>hyperlink-jar\src\main\java\com\stratelia\webactiv\hyperlink\HyperlinkInstanciator.java</resource>
+    <resource>hyperlink-jar\src\main\java\com\stratelia\webactiv\hyperlink\HyperlinkStatistics.java</resource>
+    <resource>hyperlink-war\pom.xml</resource>
+    <resource>hyperlink-war\src\main\java\com\stratelia\webactiv\hyperlink\control\HyperlinkSessionController.java</resource>
+    <resource>hyperlink-war\src\main\java\com\stratelia\webactiv\hyperlink\servlets\HyperlinkRequestRouter.java</resource>
+    <resource>hyperlink-war\src\main\webapp\hyperlink\jsp\check.jsp</resource>
+    <resource>hyperlink-war\src\main\webapp\hyperlink\jsp\redirect.jsp</resource>
+    <resource>hyperlink-war\src\main\webapp\hyperlink\jsp\sso.jsp</resource>
+    <resource>hyperlink-war\src\main\webapp\WEB-INF\web.xml</resource>
+  </resources>
+</archetype>
