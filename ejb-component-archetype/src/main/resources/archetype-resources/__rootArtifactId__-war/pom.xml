@@ -1,0 +1,38 @@
+#set( $symbol_dollar = '$' )
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>${groupId}</groupId>
+    <artifactId>${rootArtifactId}</artifactId>
+    <version>${version}</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+	
+  <groupId>${groupId}.${rootArtifactId}</groupId>
+  <artifactId>${artifactId}</artifactId>
+  <packaging>war</packaging>
+  <version>${version}</version>
+  <name>${rootArtifactId} Webapp</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.silverpeas.core</groupId>
+      <artifactId>web-core</artifactId>
+      <version>${symbol_dollar}{core.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>${groupId}.${rootArtifactId}</groupId>
+      <artifactId>${rootArtifactId}-ejb</artifactId>
+      <classifier>client</classifier>
+      <version>${version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-j2ee_1.4_spec</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>
