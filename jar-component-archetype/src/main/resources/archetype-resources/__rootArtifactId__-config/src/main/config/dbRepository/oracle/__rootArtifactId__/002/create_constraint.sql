@@ -1,5 +1,0 @@
-ALTER TABLE
-ADD CONSTRAINT
-	(
-	)   
-;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archetype-descriptor name="hyperlink">
+<archetype-descriptor name="hyperlink">  
+  <requiredProperties>
+    <requiredProperty key="className">
+    </requiredProperty>
+  </requiredProperties>
   <modules>
-    <requiredProperties>
-      <requiredProperty key="className">
-      </requiredProperty>
-    </requiredProperties>
     <module id="${rootArtifactId}-jar" dir="__rootArtifactId__-jar" name="${rootArtifactId}-jar">
       <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">

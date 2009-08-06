@@ -11,7 +11,7 @@ import com.stratelia.silverpeas.peasCore.MainSessionController;
 import com.stratelia.silverpeas.peasCore.ComponentContext;
 import com.stratelia.silverpeas.peasCore.ComponentSessionController;
 
-import com.silverpeas.@exemplepack@.control.*;
+import ${package}.control.${className}SessionController;
 
 public class ${className}RequestRouter extends ComponentRequestRouter
 {
@@ -50,7 +50,7 @@ public class ${className}RequestRouter extends ComponentRequestRouter
      */
     public String getDestination(String function, ComponentSessionController componentSC, HttpServletRequest request)
     {
-        String                          destination = "";
+        String destination = "";
         ${className}SessionController  ${rootArtifactId}SC = (${className}SessionController)componentSC;
         SilverTrace.info("${rootArtifactId}", "${className}RequestRouter.getDestination()", "root.MSG_GEN_PARAM_VALUE", "User=" + componentSC.getUserId() + " Function=" + function);
 
@@ -64,7 +64,7 @@ public class ${className}RequestRouter extends ComponentRequestRouter
             {
                 destination = "welcome.jsp";
             }
-            destination = "/@exemplewarpack@/jsp/" + destination;
+            destination = "/${rootArtifactId}/jsp/" + destination;
         }
         catch (Exception e)
         {

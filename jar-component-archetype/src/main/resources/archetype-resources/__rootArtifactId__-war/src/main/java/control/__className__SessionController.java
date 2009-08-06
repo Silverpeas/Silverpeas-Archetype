@@ -21,6 +21,6 @@ public class ${className}SessionController extends AbstractComponentSessionContr
      */
 	public ${className}SessionController(MainSessionController mainSessionCtrl, ComponentContext componentContext)
 	{
-		super(mainSessionCtrl, componentContext,  "com.silverpeas.@exemplepack@.multilang.${rootArtifactId}Bundle", "com.silverpeas.@exemplepack@.settings.${rootArtifactId}Icons");
+		super(mainSessionCtrl, componentContext,  "com.silverpeas.components.${rootArtifactId}.multilang.${className}Bundle", "com.silverpeas.components.${rootArtifactId}.settings.${className}Icons");
 	}
 }
