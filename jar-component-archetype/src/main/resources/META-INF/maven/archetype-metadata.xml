@@ -30,7 +30,18 @@
             <include>**/*.xml</include>
           </includes>
         </fileSet>
+        <fileSet filtered="false" encoding="UTF-8">
+          <directory>src/main/webapp</directory>
+          <includes>
+            <include>**/*.gif</include>
+          </includes>
+          <excludes>
+            <include>**/*.xml</include>
+            <include>**/*.jsp</include>
+          </excludes>
+        </fileSet>
       </fileSets>
+      
     </module>
     <module id="${rootArtifactId}-config" dir="__rootArtifactId__-config" name="${rootArtifactId}-config">
       <fileSets>
