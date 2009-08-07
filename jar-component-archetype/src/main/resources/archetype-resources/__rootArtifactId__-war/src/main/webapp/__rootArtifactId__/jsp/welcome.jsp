@@ -22,9 +22,9 @@
       </view:frame>
       <view:frame>
         <view:board>
-        Cette instance s'appele <b><c:out value="${symbol_dollar}{browseContext[1]}" /></b>.
+          Cette instance s'appele <b><c:out value="${symbol_dollar}{browseContext[1]}" /></b>.<br/>
+          Elle se situe dans l'espace <b><c:out value="${symbol_dollar}{browseContext[0]}" /></b>.
         </view:board>
-        Elle se situe dans l'espace <b><c:out value="${symbol_dollar}{browseContext[0]}" /></b>.
       </view:frame>
     </view:window>
   </body>
