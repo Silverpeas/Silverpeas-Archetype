@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<web-app>
+<web-app version="2.4">
   <display-name>${rootArtifactId} War</display-name>
   <description>no description</description>
   <servlet>

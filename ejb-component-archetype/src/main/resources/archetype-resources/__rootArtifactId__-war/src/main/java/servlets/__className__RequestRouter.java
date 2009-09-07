@@ -11,7 +11,7 @@ import com.stratelia.silverpeas.peasCore.MainSessionController;
 import com.stratelia.silverpeas.peasCore.ComponentContext;
 import com.stratelia.silverpeas.peasCore.ComponentSessionController;
 
-import ${package}.control.*;
+import ${package}.control.${className}SessionController;
 
 public class ${className}RequestRouter extends ComponentRequestRouter
 {
