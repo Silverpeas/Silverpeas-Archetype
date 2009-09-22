@@ -23,10 +23,10 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>${groupId}.${rootArtifactId}</groupId>
+      <groupId>${symbol_dollar}{project.groupId}</groupId>
       <artifactId>${rootArtifactId}-ejb</artifactId>
       <classifier>client</classifier>
-      <version>${version}</version>
+      <version>${symbol_dollar}{project.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
