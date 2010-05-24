@@ -6,13 +6,11 @@
     <groupId>${groupId}</groupId>
     <artifactId>${rootArtifactId}</artifactId>
     <version>${version}</version>
-    <relativePath>../pom.xml</relativePath>
   </parent>
 	
   <groupId>${groupId}.${rootArtifactId}</groupId>
   <artifactId>${artifactId}</artifactId>
   <packaging>jar</packaging>
-  <version>${version}</version>
   <name>Lib ${rootArtifactId}</name>
 	
   <dependencies>

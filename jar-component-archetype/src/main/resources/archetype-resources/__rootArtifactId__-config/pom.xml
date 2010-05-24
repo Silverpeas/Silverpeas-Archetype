@@ -5,13 +5,11 @@
     <groupId>${groupId}</groupId>
     <artifactId>${rootArtifactId}</artifactId>
     <version>${version}</version>
-    <relativePath>../pom.xml</relativePath>
   </parent>
 	
   <groupId>${groupId}.${rootArtifactId}</groupId>
   <artifactId>${artifactId}</artifactId>
   <packaging>pom</packaging>
-  <version>${version}</version>
   <name>Configuration ${rootArtifactId}</name>
 
   <build>
