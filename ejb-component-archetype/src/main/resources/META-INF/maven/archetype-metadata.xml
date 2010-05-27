@@ -42,8 +42,8 @@
             <include>**/*.gif</include>
           </includes>
           <excludes>
-            <include>**/*.xml</include>
-            <include>**/*.jsp</include>
+            <exclude>**/*.xml</exclude>
+            <exclude>**/*.jsp</exclude>
           </excludes>
         </fileSet>
       </fileSets>
