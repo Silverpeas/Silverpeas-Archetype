@@ -27,12 +27,12 @@
     <repository>
       <id>silverpeas</id>
       <name>Repository Silverpeas</name>
-      <url>dav:http://repository.silverpeas.org/nexus/content/repositories/releases/</url>
+      <url>http://repository.silverpeas.org/nexus/content/repositories/releases/</url>
     </repository>
     <snapshotRepository>
       <id>silverpeas-snapshots</id>
       <name>Snapshots Repository Silverpeas</name>
-      <url>dav:http://repository.silverpeas.org/nexus/content/repositories/snapshots/</url>
+      <url>http://repository.silverpeas.org/nexus/content/repositories/snapshots/</url>
     </snapshotRepository>
   </distributionManagement>
 </project>
