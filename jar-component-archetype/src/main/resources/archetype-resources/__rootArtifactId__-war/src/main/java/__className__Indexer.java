@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 
-package com.silverpeas.${rootArtifactId};
+package ${package};
 
 import com.stratelia.silverpeas.peasCore.ComponentContext;
 import com.stratelia.silverpeas.peasCore.MainSessionController;
@@ -10,6 +10,7 @@ import com.stratelia.webactiv.applicationIndexer.control.ComponentIndexerInterfa
 
 public class ${className}Indexer implements ComponentIndexerInterface {
 
-    public void index(MainSessionController mainSessionCtrl, ComponentContext context) throws Exception {
-    }
+  @Override
+  public void index(MainSessionController mainSessionCtrl, ComponentContext context) throws Exception {
+  }
 }
