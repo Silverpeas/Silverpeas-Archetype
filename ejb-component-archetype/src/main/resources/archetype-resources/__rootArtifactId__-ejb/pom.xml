@@ -21,9 +21,5 @@
       <artifactId>lib-core</artifactId>
       <version>${symbol_dollar}{core.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-j2ee_1.4_spec</artifactId>
-    </dependency>
   </dependencies>
 </project>
