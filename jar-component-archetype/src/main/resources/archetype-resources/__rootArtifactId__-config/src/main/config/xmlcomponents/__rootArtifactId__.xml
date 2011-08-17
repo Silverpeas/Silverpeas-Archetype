@@ -2,17 +2,63 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 <?xml version="1.0" encoding="UTF-8"?>
-<WAComponent>
+<WAComponent xmlns="http://silverpeas.org/xml/ns/component" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://silverpeas.org/xml/ns/component http://www.silverpeas.org/xsd/component.xsd">
   <name>${rootArtifactId}</name>
-  <label>${rootArtifactId}</label>
-  <description>${rootArtifactId}</description>
-  <suite>80 Nouveau composant</suite>
-  <visible>${rootArtifactId}</visible>
-  <portlet>no</portlet>
+  <label>
+    <message lang="fr">${rootArtifactId}</message>
+    <message lang="en">${rootArtifactId}</message>
+    <message lang="de">${rootArtifactId}</message>
+  </label>
+    <description>
+    <message lang="fr">${rootArtifactId}</message>
+    <message lang="en">${rootArtifactId}</message>
+    <message lang="de">${rootArtifactId}</message>
+  </description>
+   <suite>
+    <message lang="fr">80 Nouveaux Composants</message>
+    <message lang="en">80 New Components </message>
+    <message lang="de">80 Neue Komponenten</message>
+  </suite>
+  <visible>true</visible>
+  <portlet>false</portlet>
   <instanceClassName>${package}.${className}Instanciator</instanceClassName>
- <Profiles>
-    <Profile name="admin">Gestionnaire</Profile>
-    <Profile name="publisher">Publieur</Profile>
-    <Profile name="user">Lecteur</Profile>
-  </Profiles>
+<profiles>
+    <profile name="admin">
+      <label>
+        <message lang="fr">Gestionnaires</message>
+        <message lang="en">Administrators</message>
+        <message lang="de">Administrator</message>
+      </label>
+      <help>
+        <message lang="fr">Gestionnaires.</message>
+        <message lang="en">Administrators.</message>
+        <message lang="de">Administrator</message>
+      </help>
+    </profile>
+    <profile name="publisher">
+      <label>
+        <message lang="fr">Publieurs</message>
+        <message lang="en">Publishers</message>
+        <message lang="de">Herausgeber</message>
+      </label>
+      <help>
+        <message lang="fr">Publieurs.</message>
+        <message lang="en">Publishers.</message>
+        <message lang="de">Herausgeber</message>
+      </help>
+    </profile>
+    <profile name="user">
+      <label>      
+        <message lang="fr">Lecteurs</message>
+        <message lang="en">Readers</message>
+        <message lang="de">Leser</message>
+      </label>
+      <help>      
+        <message lang="fr">Lecteurs.</message>
+        <message lang="en">Readers.</message>
+        <message lang="de">Leser.</message>
+      </help>
+    </profile>
+  </profiles>
 </WAComponent>
