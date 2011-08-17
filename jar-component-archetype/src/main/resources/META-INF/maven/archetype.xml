@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><archetype>
   <id>hyperlink</id>
   <resources>
+    <resource>pom.xml</resource>
     <resource>hyperlink-config\pom.xml</resource>
     <resource>hyperlink-config\src\main\config\properties\com\silverpeas\hyperlink\multilang\hyperlinkBundle.properties</resource>
     <resource>hyperlink-config\src\main\config\properties\com\silverpeas\hyperlink\multilang\hyperlinkBundle_en.properties</resource>
