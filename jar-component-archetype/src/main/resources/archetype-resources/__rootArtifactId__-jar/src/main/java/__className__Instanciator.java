@@ -4,11 +4,11 @@
 
 package ${package};
 
+import com.silverpeas.admin.components.ComponentsInstanciatorIntf;
+import com.silverpeas.admin.components.InstanciationException;
+import com.stratelia.silverpeas.silvertrace.SilverTrace;
 import java.sql.Connection;
 
-import com.stratelia.silverpeas.silvertrace.SilverTrace;
-import com.stratelia.webactiv.beans.admin.instance.control.ComponentsInstanciatorIntf;
-import com.stratelia.webactiv.beans.admin.instance.control.InstanciationException;
 
 public class ${className}Instanciator implements ComponentsInstanciatorIntf {
 
