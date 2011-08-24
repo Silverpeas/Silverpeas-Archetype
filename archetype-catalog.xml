@@ -13,5 +13,11 @@
       <version>1.0-SNAPSHOT</version>
       <description>Silverpeas Component with Jar archetype</description>
     </archetype>
+    <archetype>
+      <groupId>com.silverpeas.components</groupId>
+      <artifactId>jar-look-archetype</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <description>Silverpeas Look archetype</description>
+    </archetype>
   </archetypes>
 </archetype-catalog>
