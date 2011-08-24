@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2000 - 2011 Silverpeas
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    As a special exception to the terms and conditions of version 3.0 of
+    the GPL, you may redistribute this Program in connection with Free/Libre
+    Open Source Software ("FLOSS") applications as described in Silverpeas's
+    FLOSS exception.  You should have recieved a copy of the text describing
+    the FLOSS exception, and it is also available here:
+    "http://www.silverpeas.com/legal/licensing"
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<archetype-descriptor name="Silverpeas look" partial="false" xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd">  
+  <requiredProperties>
+    <requiredProperty key="groupId">
+      <defaultValue>com.silverpeas.customers.look</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="package">
+      <defaultValue>${groupId}.${artifactId}</defaultValue>
+    </requiredProperty>
+     <requiredProperty key="silverpeas-version"></requiredProperty>
+     <requiredProperty key="className"></requiredProperty> 
+  </requiredProperties>
+  <modules>
+    <module id="${rootArtifactId}-war" dir="__rootArtifactId__-war" name="${rootArtifactId}-war">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/webapp</directory>
+          <includes>
+            <include>**/*.jsp</include>
+            <include>**/*.jsp.inc</include>
+            <include>**/*.xml</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="false" encoding="UTF-8">
+          <directory>src/main/webapp</directory>
+          <includes>
+            <include>**/*.gif</include>
+          </includes>
+          <excludes>
+            <exclude>**/*.xml</exclude>
+            <exclude>**/*.jsp</exclude>
+          </excludes>
+        </fileSet>
+      </fileSets>      
+    </module>
+    <module id="${rootArtifactId}-config" dir="__rootArtifactId__-config" name="${rootArtifactId}-config">
+      <fileSets>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/config</directory>
+          <includes>
+            <include>**/*.xml</include>
+            <include>**/*.properties</include>
+            <include>**/*.txt</include>
+            <include>**/*.sql</include>
+            <include>**/*.css</include>
+            <include>**/*.js</include>
+          </includes>
+          <excludes>
+            <exclude>**/*.gif</exclude>
+            <exclude>**/*.png</exclude>
+            <exclude>**/*.jpg</exclude>
+          </excludes>
+        </fileSet>
+        <fileSet filtered="false" encoding="UTF-8">
+          <directory>src/main/config</directory>
+          <includes>
+            <include>**/*.gif</include>
+            <include>**/*.png</include>
+            <include>**/*.jpg</include>
+          </includes>
+          <excludes>
+            <exclude>**/*.xml</exclude>
+            <exclude>**/*.properties</exclude>
+            <exclude>**/*.txt</exclude>
+            <exclude>**/*.sql</exclude>
+            <exclude>**/*.css</exclude>
+            <exclude>**/*.js</exclude>
+          </excludes>
+        </fileSet>
+      </fileSets>
+    </module>
+  </modules>
+</archetype-descriptor>
