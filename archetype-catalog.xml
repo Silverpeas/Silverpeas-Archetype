@@ -2,22 +2,22 @@
 <archetype-catalog>
   <archetypes>
     <archetype>
-      <groupId>com.silverpeas.components</groupId>
+      <groupId>com.silverpeas.archetypes</groupId>
       <artifactId>ejb-component-archetype</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <description>Silverpeas Component with EJB archetype</description>
+      <description>Silverpeas Archetype for EJB component (deprecated)</description>
     </archetype>
     <archetype>
-      <groupId>com.silverpeas.components</groupId>
+      <groupId>com.silverpeas.archetypes</groupId>
       <artifactId>jar-component-archetype</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <description>Silverpeas Component with Jar archetype</description>
+      <description>Silverpeas Archetype for Jar component</description>
     </archetype>
     <archetype>
-      <groupId>com.silverpeas.components</groupId>
+      <groupId>com.silverpeas.archetypes</groupId>
       <artifactId>jar-look-archetype</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <description>Silverpeas Look archetype</description>
+      <description>Silverpeas Archetype for look</description>
     </archetype>
   </archetypes>
 </archetype-catalog>
