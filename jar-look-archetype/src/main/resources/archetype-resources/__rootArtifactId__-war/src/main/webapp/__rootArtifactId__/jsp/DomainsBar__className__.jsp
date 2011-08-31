@@ -150,12 +150,12 @@ if ("personalQuestion".equalsIgnoreCase(pwdResetBehavior)) {
     if (navVisible)
     {
       document.body.scroll = "no";
-      document.images['expandReduce'].src="icons/silverpeasV5/extend.gif";
+      document.images['expandReduce'].src='<c:url value="/admin/jsp/icons/silverpeasV5/extend.gif" />';
     }
     else
     {
       document.body.scroll = "auto";
-      document.images['expandReduce'].src="icons/silverpeasV5/reduct.gif";
+      document.images['expandReduce'].src=='<c:url value="/admin/jsp/icons/silverpeasV5/reduct.gif" />';
     }
     document.images['expandReduce'].blur();
     navVisible = !navVisible;
@@ -218,7 +218,7 @@ if ("personalQuestion".equalsIgnoreCase(pwdResetBehavior)) {
 
     function getTopBarPage()
     {
-        return "TopBar${className}.jsp";
+        return "/${rootArtifactId}/jsp/TopBar${className}.jsp";
     }
 
     function getFooterPage()
@@ -271,13 +271,13 @@ if ("personalQuestion".equalsIgnoreCase(pwdResetBehavior)) {
 </script>
 </head>
 <body class="fondDomainsBar">
-<div id="redExp"><a href="javascript:resizeFrame();"><img src="icons/silverpeasV5/reduct.gif" border="0" name="expandReduce" alt="<fmt:message key="look${className}.reductExtend" />" title="<fmt:message key="look${className}.reductExtend" />"/></a></div>
+  <div id="redExp"><a href="javascript:resizeFrame();"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/reduct.gif" />' border="0" name="expandReduce" alt="<fmt:message key="look${className}.reductExtend" />" title="<fmt:message key="look${className}.reductExtend" />"/></a></div>
 <div id="domainsBar">
   <div id="recherche">
     <div id="submitRecherche">
       <form name="searchForm" action="<%=m_sContext%>/RpdcSearch/jsp/AdvancedSearch" method="post" target="MyMain">
       <input name="query" size="30" id="query"/><input type="hidden" name="mode" value="clear"/>
-      <a href="javascript:searchEngine()"><img src="icons/silverpeasV5/px.gif" width="20" height="20" border="0" alt=""/></a>
+      <a href="javascript:searchEngine()"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/px.gif" />' width="20" height="20" border="0" alt=""/></a>
       </form>
     </div>
         <div id="bodyRecherche">
@@ -288,9 +288,9 @@ if ("personalQuestion".equalsIgnoreCase(pwdResetBehavior)) {
   <div id="basSpaceTransverse">
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
-                <td class="basSpacesGauche"><img src="icons/silverpeasV5/px.gif" width="8" height="8" alt=""/></td>
-                <td class="basSpacesMilieu"><img src="icons/silverpeasV5/px.gif" width="8" height="8" alt=""/></td>
-                <td class="basSpacesDroite"><img src="icons/silverpeasV5/px.gif" width="8" height="8" alt=""/></td>
+              <td class="basSpacesGauche"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/px.gif" />' width="8" height="8" alt=""/></td>
+              <td class="basSpacesMilieu"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/px.gif" />' width="8" height="8" alt=""/></td>
+              <td class="basSpacesDroite"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/px.gif" />' width="8" height="8" alt=""/></td>
             </tr>
         </table>
     </div>
@@ -337,7 +337,7 @@ if ("personalQuestion".equalsIgnoreCase(pwdResetBehavior)) {
         </div>
       </c:if>
       <div id="spaces">
-		<center><br/><br/><fmt:message key="look${className}.loadingSpaces" /><br/><br/><img src="icons/silverpeasV5/inProgress.gif" alt="<fmt:message key="look${className}.loadingSpaces" />"/></center>
+        <center><br/><br/><fmt:message key="look${className}.loadingSpaces" /><br/><br/><img src='<c:url value="/admin/jsp/icons/silverpeasV5/inProgress.gif" />' alt="<fmt:message key="look${className}.loadingSpaces" />"/></center>
 	  </div>
       <% if (!helper.isAnonymousAccess()) { %>
         <div id="spacePerso" class="spaceLevelPerso"><a class="spaceURL" href="javaScript:openMySpace();"><fmt:message key="look${className}.PersonalSpace" /></a></div>
@@ -346,9 +346,9 @@ if ("personalQuestion".equalsIgnoreCase(pwdResetBehavior)) {
     <div id="basSpaces">
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
-                <td class="basSpacesGauche"><img src="icons/silverpeasV5/px.gif" width="8" height="8" alt=""/></td>
-                <td class="basSpacesMilieu"><img src="icons/silverpeasV5/px.gif" width="8" height="8" alt=""/></td>
-                <td class="basSpacesDroite"><img src="icons/silverpeasV5/px.gif" width="8" height="8" alt=""/></td>
+              <td class="basSpacesGauche"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/px.gif" />'width="8" height="8" alt=""/></td>
+              <td class="basSpacesMilieu"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/px.gif" />' width="8" height="8" alt=""/></td>
+              <td class="basSpacesDroite"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/px.gif" />' width="8" height="8" alt=""/></td>
             </tr>
         </table>
     </div>

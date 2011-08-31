@@ -25,6 +25,11 @@
 --%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://www.silverpeas.com/tld/viewGenerator" prefix="view"%>
+
 <%@page import="com.stratelia.silverpeas.pdcPeas.control.PdcSearchSessionController"%>
 <%@ include file="../../pdcPeas/jsp/checkAdvancedSearch.jsp"%>
 <%!
@@ -234,7 +239,7 @@ function init()
 	}
 %>
 	<td><img src="<%=resource.getIcon("pdcPeas.noColorPix")%>" width="20" height="1" alt=""/></td>
-	<td><%=searchButton.print()%></td><td><img src="<%=resource.getIcon("pdcPeas.1px")%>" width="0" height="1" alt=""/></td><td><a href="javaScript:raz()" title="<%=resource.getString("GML.reset")%>"><img src="<%=m_context%>/admin/jsp/icons/silverpeasV5/refresh.gif" border="0" alt="<%=resource.getString("GML.reset")%>"/></a></td>
+    <td><%=searchButton.print()%></td><td><img src="<%=resource.getIcon("pdcPeas.1px")%>" width="0" height="1" alt=""/></td><td><a href="javaScript:raz()" title="<%=resource.getString("GML.reset")%>"><img src='<c:url value="/admin/jsp/admin/jsp/icons/silverpeasV5/refresh.gif"/>' border="0" alt="<%=resource.getString("GML.reset")%>"/></a></td>
 	</tr></table>
 </form>
 </center>

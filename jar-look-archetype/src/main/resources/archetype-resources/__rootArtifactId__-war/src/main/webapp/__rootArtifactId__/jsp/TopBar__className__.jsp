@@ -117,12 +117,12 @@ function getContext()
 
 function getDomainsBarPage()
 {
-	return "DomainsBar${className}.jsp";
+	return "/${rootArtifactId}/jsp/DomainsBar${className}.jsp";
 }
 
 function getTopBarPage()
 {
-	return "TopBar${className}.jsp";
+	return "/${rootArtifactId}/jsp/TopBar${className}.jsp";
 }
 
 function loadThisPage()
@@ -139,10 +139,10 @@ function reloadTopBar()
 </head>
 <body bgcolor="#FFFFFF" onload="loadThisPage()">
 <div id="topBar">
-	<div style="position: absolute; right: 0px; top: 0px; background-color: #FFFFFF; width: 100%"><img src="icons/silverpeasV5/px.gif" border="0" height="0" id="space2Expand" align="middle" alt=""/></div>
-	<div style="position: absolute; right: 0px; top: 2px"><a href="javascript:resizeFrame();"><img src="icons/silverpeasV5/reductTopBar.gif" border="0" align="middle" name="expandReduce" alt="<%=helper.getString("look${className}.reductExtend")%>" title="<%=helper.getString("look${className}.reductExtend")%>"/></a></div>
+  <div style="position: absolute; right: 0px; top: 0px; background-color: #FFFFFF; width: 100%"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/px.gif" />' border="0" height="0" id="space2Expand" align="middle" alt=""/></div>
+  <div style="position: absolute; right: 0px; top: 2px"><a href="javascript:resizeFrame();"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/reductTopBar.gif" />' border="0" align="middle" name="expandReduce" alt="<%=helper.getString("look${className}.reductExtend")%>" title="<%=helper.getString("look${className}.reductExtend")%>"/></a></div>
     <div id="backHome">
-        <a href="javaScript:goToHome();"><img src="icons/silverpeasV5/px.gif" width="220" height="105" border="0" id="pxUrlHome" alt=""/></a></div>
+      <a href="javaScript:goToHome();"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/px.gif" />' width="220" height="105" border="0" id="pxUrlHome" alt=""/></a></div>
         <script type="text/javascript">
 			var xmlfile="/weblib/ticker/tickercontent_<%=language%>.txt" //path to ticker txt file on your server.
 			//ajax_ticker(xmlfile, divId, divClass, delay, optionalfadeornot)
@@ -188,7 +188,7 @@ function reloadTopBar()
         <table border="0" cellspacing="0" cellpadding="0">
         	<tr>
               <td class="gaucheShortcuts">&nbsp;</td>
-              <td nowrap="nowrap" align="center"><img src="icons/silverpeasV5/px.gif" width="40" height="1" border="0"/></td>
+              <td nowrap="nowrap" align="center"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/px.gif" />' width="40" height="1" border="0"/></td>
               <%
             	TopItem item 		= null; 
             	String 	cssStyle 	= "";
@@ -204,7 +204,7 @@ function reloadTopBar()
             			cssStyle = "activeShortcut";
             	%>
             		<td nowrap="nowrap" align="center" id="item<%=item.getId()%>" class="<%=cssStyle%>"><nobr><a href="javaScript:goToItem('<%=item.getSpaceId()%>', '<%=item.getSubSpaceId()%>', '<%=item.getComponentId()%>', '<%=m_sContext%><%=item.getUrl()%>', '<%=item.getId()%>', false);"><%=item.getLabel()%></a></nobr></td>
-            		<td nowrap="nowrap" align="center"><img src="icons/silverpeasV5/px.gif" width="40" height="1" border="0"/></td>
+                    <td nowrap="nowrap" align="center"><img src='<c:url value="/admin/jsp/icons/silverpeasV5/px.gif" />' width="40" height="1" border="0"/></td>
             	<% } %>
                 <td class="droiteShortcuts">&nbsp;</td>
             </tr>

@@ -64,7 +64,7 @@ else {
 	if (helper == null)
 	{
 		helper = new Look${className}Helper(m_MainSessionCtrl, gef.getFavoriteLookSettings());
-		helper.setMainFrame("MainFrame${className}.jsp");
+		helper.setMainFrame("/${rootArtifactId}/jsp/MainFrame${className}.jsp");
 		session.setAttribute("Silverpeas_LookHelper", helper);
 		login = true;
 	}
@@ -98,11 +98,11 @@ else {
       frameBottomParams += "&amp;Login=1";
     }
 
-	if (!"MainFrame${className}.jsp".equalsIgnoreCase(helper.getMainFrame())) {
+	if (!"/${rootArtifactId}/jsp/MainFrame${className}.jsp".equalsIgnoreCase(helper.getMainFrame())) {
 		session.setAttribute("RedirectToSpaceId", spaceIdFromRedirect);
 		%>
 			<script type="text/javascript">
-				top.location="<%=helper.getMainFrame()%>";
+              top.location="<c:url><%=helper.getMainFrame()%></c:url>";
 			</script>
 		<%
 	}
