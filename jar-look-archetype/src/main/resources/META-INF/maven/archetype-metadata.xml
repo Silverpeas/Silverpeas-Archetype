@@ -34,7 +34,7 @@
       <defaultValue>${groupId}.${artifactId}</defaultValue>
     </requiredProperty>
      <requiredProperty key="silverpeas-version"></requiredProperty>
-     <requiredProperty key="className"></requiredProperty> 
+     <requiredProperty key="className"><!--<defaultValue>${artifactId.substring(0,1).toUpperCase()}${artifactId.substring(1)}</defaultValue>--></requiredProperty> 
   </requiredProperties>
   <modules>
     <module id="${rootArtifactId}-war" dir="__rootArtifactId__-war" name="${rootArtifactId}-war">
