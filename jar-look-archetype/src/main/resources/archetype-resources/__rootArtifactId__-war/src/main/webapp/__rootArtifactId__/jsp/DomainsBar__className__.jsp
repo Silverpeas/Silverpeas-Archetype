@@ -223,7 +223,7 @@ if ("personalQuestion".equalsIgnoreCase(pwdResetBehavior)) {
 
     function getFooterPage()
     {
-    	return getContext()+"/RpdcSearch/jsp/ChangeSearchTypeToExpert?SearchPage=/admin/jsp/pdcSearchSilverpeasV5.jsp&";
+    	return getContext()+"/RpdcSearch/jsp/ChangeSearchTypeToExpert?SearchPage=/admin/jsp/pdcSearch${className}.jsp&";
     }
 
     /**
