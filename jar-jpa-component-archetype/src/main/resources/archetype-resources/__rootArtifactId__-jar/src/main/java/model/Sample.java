@@ -7,12 +7,12 @@ import javax.persistence.*;
 
 
 //@Entity
-//@Table(name = "sc_${moduleName}_sample")
+//@Table(name = "sc_${rootArtifactId}_sample")
 public class Sample {
     @Id
     @Column(name = "pubId", nullable = false)
-    @SequenceGenerator(name = "sc_${moduleName}_sample_id_seq", sequenceName = "sc_${moduleName}_sample_id_seq")
-    @GeneratedValue(generator = "sc_${moduleName}_sample_id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "sc_${rootArtifactId}_sample_id_seq", sequenceName = "sc_${rootArtifactId}_sample_id_seq")
+    @GeneratedValue(generator = "sc_${rootArtifactId}_sample_id_seq", strategy = GenerationType.SEQUENCE)
     private Integer id;
     @Column
     private String firstName;
