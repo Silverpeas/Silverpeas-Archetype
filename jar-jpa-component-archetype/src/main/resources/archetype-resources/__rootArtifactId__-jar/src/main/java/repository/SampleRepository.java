@@ -1,4 +1,4 @@
-package ${package}.dao;
+package ${package}.repository;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import org.springframework.data.repository.query.Param;
 import ${package}.model.Sample;
 
 /* 
- * DAO sample using Spring JPA 
+ * Repository sample using Spring JPA 
  * Must extend JpaRepository
  * */
-public interface SampleDAO /*extends JpaRepository<Sample, Integer>*/ {
+public interface SampleRepository /*extends JpaRepository<Sample, Integer>*/ {
 
 	@Query("from Sample s WHERE s.componentId = :myId")
 	public List<Sample> getAll(@Param("myId") String componentId);

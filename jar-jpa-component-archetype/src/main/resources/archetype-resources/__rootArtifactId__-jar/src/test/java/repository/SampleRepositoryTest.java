@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.dao;
+package ${package}.repository;
 
 //import ${package}.model.Sample;
 //import ${package}.service.${ClassNamePrefix}ServicesLocator;
@@ -20,29 +20,29 @@ import java.io.IOException;
 import java.sql.SQLException;
 //import java.util.List;
 
-public class TestSampleDao {
+public class SampleRepositoryTest {
 
 //	private static final String COMPONENT_ID="1";
-//    private static SampleDAO dao;
+//    private static SampleRepository repository;
     private static ClassPathXmlApplicationContext context;
     private static ReplacementDataSet dataSet;
     private static DatabaseConnection connection;
 
-    public TestSampleDao() {
+    public SampleRepositoryTest() {
     }
 
     @BeforeClass
     public static void generalSetUp() throws IOException, NamingException,
             Exception {
         context = new ClassPathXmlApplicationContext("spring-${rootArtifactId}.xml");
-//        dao = context.getBean(SampleDAO.class);
+//        repository = context.getBean(SampleRepository.class);
         DataSource ds = (DataSource) context.getBean("dataSource");
         FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
         FlatXmlDataSet idataSet = builder
-                .build(TestSampleDao.class
+                .build(SampleRepositoryTest.class
                         .getClassLoader()
                         .getResourceAsStream(
-                                "${packageInPathFormat}/dao/${rootArtifactId}-dataset.xml"));
+                                "${packageInPathFormat}/data/${rootArtifactId}-dataset.xml"));
         dataSet = new ReplacementDataSet(idataSet);
         dataSet.addReplacementObject("[NULL]", null);
         connection = new DatabaseConnection(ds.getConnection());
@@ -66,18 +66,18 @@ public class TestSampleDao {
 //    @Test
 //    public void testFindNotExistingSample() throws Exception {
 //        int id = 99999;
-//        Sample dbSample = dao.findOne(id);
+//        Sample dbSample = repository.findOne(id);
 //        Assert.assertNull(dbSample);
 //    }
 //
 //    @Test
 //    public void testDeleteAndGetAll() throws Exception {
-//        List<Sample> dbSamples = dao.getAll(COMPONENT_ID);
+//        List<Sample> dbSamples = repository.getAll(COMPONENT_ID);
 //        int count = dbSamples.size();
 //
-//        dao.delete(1);
+//        repository.delete(1);
 //
-//        dbSamples = dao.getAll(COMPONENT_ID);
+//        dbSamples = repository.getAll(COMPONENT_ID);
 //        Assert.assertEquals(count-1, dbSamples.size());
 //    }
 

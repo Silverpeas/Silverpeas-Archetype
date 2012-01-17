@@ -24,7 +24,7 @@
 
 
     <jdbc:embedded-database id="dataSource" type="H2">
-        <jdbc:script location="classpath:/${packageInPathFormat}/dao/create-database.sql"/>
+        <jdbc:script location="classpath:/${packageInPathFormat}/data/create-database.sql"/>
     </jdbc:embedded-database>
 
     <import resource="spring-jpa.xml"/>
