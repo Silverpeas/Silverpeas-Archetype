@@ -26,7 +26,7 @@
 -->
 <archetype-descriptor name="hyperlink">  
   <requiredProperties>
-    <requiredProperty key="className"></requiredProperty>
+    <requiredProperty key="ClassNamePrefix"></requiredProperty>
      <requiredProperty key="SilverpeasVersion"></requiredProperty>
   </requiredProperties>
   <modules>
