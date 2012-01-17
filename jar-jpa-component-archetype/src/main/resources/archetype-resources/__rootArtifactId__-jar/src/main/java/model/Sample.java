@@ -10,7 +10,6 @@ import javax.persistence.*;
 //@Table(name = "sc_${rootArtifactId}_sample")
 public class Sample {
     @Id
-    @Column(name = "pubId", nullable = false)
     @SequenceGenerator(name = "sc_${rootArtifactId}_sample_id_seq", sequenceName = "sc_${rootArtifactId}_sample_id_seq")
     @GeneratedValue(generator = "sc_${rootArtifactId}_sample_id_seq", strategy = GenerationType.SEQUENCE)
     private Integer id;
