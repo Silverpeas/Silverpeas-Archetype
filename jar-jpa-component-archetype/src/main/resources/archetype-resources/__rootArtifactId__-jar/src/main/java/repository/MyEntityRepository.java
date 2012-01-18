@@ -6,15 +6,15 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import ${package}.model.Sample;
+import ${package}.model.MyEntity;
 
 /* 
  * Repository sample using Spring JPA 
  * Must extend JpaRepository
  * */
-public interface SampleRepository /*extends JpaRepository<Sample, Integer>*/ {
+public interface MyEntityRepository /*extends JpaRepository<MyEntity, Integer>*/ {
 
-	@Query("from Sample s WHERE s.componentId = :myId")
-	public List<Sample> getAll(@Param("myId") String componentId);
+	@Query("from MyEntity s WHERE s.componentId = :myId")
+	public List<MyEntity> getAll(@Param("myId") String componentId);
 
 }

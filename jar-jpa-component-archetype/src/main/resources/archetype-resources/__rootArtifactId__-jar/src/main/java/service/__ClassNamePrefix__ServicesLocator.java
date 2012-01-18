@@ -11,7 +11,7 @@ public class ${ClassNamePrefix}ServicesLocator {
 	 * with standard annotations : @Singleton and @Named 
 	 */
 //    @Inject
-//    private SampleService sampleService;
+//    private MyEntityService myentityService;
 
     private static class SingletonLoader {
         private static final ${ClassNamePrefix}ServicesLocator _instance = new ${ClassNamePrefix}ServicesLocator();
@@ -22,8 +22,8 @@ public class ${ClassNamePrefix}ServicesLocator {
     }
 
     //TODO insert your services getters here
-//    public SampleService getSampleService() {
-//        return sampleService;
+//    public MyEntityService getMyEntityService() {
+//        return myentityService;
 //    }
 
 }

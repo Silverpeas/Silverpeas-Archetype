@@ -7,11 +7,11 @@ import javax.persistence.*;
 
 
 //@Entity
-//@Table(name = "sc_${rootArtifactId}_sample")
-public class Sample {
+//@Table(name = "sc_${rootArtifactId}_myentity")
+public class MyEntity {
     @Id
-    @SequenceGenerator(name = "sc_${rootArtifactId}_sample_id_seq", sequenceName = "sc_${rootArtifactId}_sample_id_seq")
-    @GeneratedValue(generator = "sc_${rootArtifactId}_sample_id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "sc_${rootArtifactId}_myentity_id_seq", sequenceName = "sc_${rootArtifactId}_myentity_id_seq")
+    @GeneratedValue(generator = "sc_${rootArtifactId}_myentity_id_seq", strategy = GenerationType.SEQUENCE)
     private Integer id;
     @Column
     private String firstName;
@@ -22,9 +22,9 @@ public class Sample {
     private String componentId;
 
     @SuppressWarnings("unused") // only used for persistence
-    private Sample() {}
+    private MyEntity() {}
 
-    public Sample(String firstName, String lastName, String componentId) {
+    public MyEntity(String firstName, String lastName, String componentId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.componentId = componentId;

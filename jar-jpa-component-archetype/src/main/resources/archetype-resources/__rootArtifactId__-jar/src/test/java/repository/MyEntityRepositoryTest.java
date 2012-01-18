@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.repository;
 
-//import ${package}.model.Sample;
+//import ${package}.model.MyEntity;
 //import ${package}.service.${ClassNamePrefix}ServicesLocator;
 import org.dbunit.DatabaseUnitException;
 import org.dbunit.database.DatabaseConnection;
@@ -20,26 +20,26 @@ import java.io.IOException;
 import java.sql.SQLException;
 //import java.util.List;
 
-public class SampleRepositoryTest {
+public class MyEntityRepositoryTest {
 
 //	private static final String COMPONENT_ID="1";
-//    private static SampleRepository repository;
+//    private static MyEntityRepository repository;
     private static ClassPathXmlApplicationContext context;
     private static ReplacementDataSet dataSet;
     private static DatabaseConnection connection;
 
-    public SampleRepositoryTest() {
+    public MyEntityRepositoryTest() {
     }
 
     @BeforeClass
     public static void generalSetUp() throws IOException, NamingException,
             Exception {
         context = new ClassPathXmlApplicationContext("spring-${rootArtifactId}.xml");
-//        repository = context.getBean(SampleRepository.class);
-        DataSource ds = (DataSource) context.getBean("dataSource");
+//        repository = context.getBean(MyEntityRepository.class);
+        DataSource ds = (DataSource) context.getBean("jpaDataSource");
         FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
         FlatXmlDataSet idataSet = builder
-                .build(SampleRepositoryTest.class
+                .build(MyEntityRepositoryTest.class
                         .getClassLoader()
                         .getResourceAsStream(
                                 "${packageInPathFormat}/data/${rootArtifactId}-dataset.xml"));
@@ -64,21 +64,21 @@ public class SampleRepositoryTest {
     }
 
 //    @Test
-//    public void testFindNotExistingSample() throws Exception {
+//    public void testFindNotExistingMyEntity() throws Exception {
 //        int id = 99999;
-//        Sample dbSample = repository.findOne(id);
-//        Assert.assertNull(dbSample);
+//        MyEntity dbMyEntity = repository.findOne(id);
+//        Assert.assertNull(dbMyEntity);
 //    }
 //
 //    @Test
 //    public void testDeleteAndGetAll() throws Exception {
-//        List<Sample> dbSamples = repository.getAll(COMPONENT_ID);
-//        int count = dbSamples.size();
+//        List<MyEntity> dbMyEntitys = repository.getAll(COMPONENT_ID);
+//        int count = dbMyEntitys.size();
 //
 //        repository.delete(1);
 //
-//        dbSamples = repository.getAll(COMPONENT_ID);
-//        Assert.assertEquals(count-1, dbSamples.size());
+//        dbMyEntitys = repository.getAll(COMPONENT_ID);
+//        Assert.assertEquals(count-1, dbMyEntitys.size());
 //    }
 
 

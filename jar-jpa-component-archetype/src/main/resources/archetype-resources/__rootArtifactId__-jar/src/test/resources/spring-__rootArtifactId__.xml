@@ -23,7 +23,7 @@
                       transaction-manager-ref="jpaTransactionManager"/>
 
 
-    <jdbc:embedded-database id="dataSource" type="H2">
+    <jdbc:embedded-database id="jpaDataSource" type="H2">
         <jdbc:script location="classpath:/${packageInPathFormat}/data/create-database.sql"/>
     </jdbc:embedded-database>
 
