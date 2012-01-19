@@ -26,23 +26,18 @@
  */
 package ${package}.servlets;
 
+import ${package}.control.${ClassNamePrefix}SessionController;
+import ${package}.control.${ClassNamePrefix}WelcomeController;
+import com.silverpeas.webcore.ActionControllerSupport;
+import com.silverpeas.webcore.RequestRouterSupport;
+import com.stratelia.silverpeas.peasCore.ComponentContext;
+import com.stratelia.silverpeas.peasCore.MainSessionController;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import ${package}.control.ActionControllerSupport;
-import ${package}.control.${ClassNamePrefix}WelcomeController;
-import ${package}.control.${ClassNamePrefix}SessionController;
-import com.stratelia.silverpeas.peasCore.ComponentContext;
-import com.stratelia.silverpeas.peasCore.MainSessionController;
-import com.stratelia.silverpeas.peasCore.PeasCoreException;
-import com.stratelia.silverpeas.peasCore.servlets.ComponentRequestRouter;
-import com.stratelia.silverpeas.silvertrace.SilverTrace;
-import com.stratelia.webactiv.util.exception.SilverpeasRuntimeException;
-
 public class ${ClassNamePrefix}RequestRouter extends
-		ComponentRequestRouter<${ClassNamePrefix}SessionController> {
+        RequestRouterSupport<${ClassNamePrefix}SessionController> {
 	private static final long serialVersionUID = 2306409242623119934L;
 
 	private final Map<String, ActionControllerSupport> viewMappings = new HashMap<String, ActionControllerSupport>();
@@ -77,84 +72,7 @@ public class ${ClassNamePrefix}RequestRouter extends
 		return new ${ClassNamePrefix}SessionController(mainSessionCtrl, componentContext);
 	}
 
-	/**
-	 * This method has to be implemented by the component request rooter it has
-	 * to compute a destination page
-	 * 
-	 * @param function
-	 *            The entering request function (ex : "Main.jsp")
-	 * @param componentSC
-	 *            The component Session Control, build and initialised.
-	 * @return The complete destination URL for a forward (ex :
-	 *         "/almanach/jsp/almanach.jsp?flag=user")
-	 */
-	@Override
-	public String getDestination(String function,
-			${ClassNamePrefix}SessionController componentSC, HttpServletRequest request) {
-		SilverTrace.info(componentSC.getComponentName(), "${ClassNamePrefix}RequestRouter.getDestination()",
-				"root.MSG_GEN_PARAM_VALUE", "User=" + componentSC.getUserId()
-						+ " Function=" + function);
-		try {
-			String destination = getDestination(function, componentSC, request,
-					false);
-			SilverTrace.info(componentSC.getComponentName(),
-					"${ClassNamePrefix}RequestRouter.getDestination()",
-					"root.MSG_GEN_PARAM_VALUE", "Destination=" + destination);
-			return destination;
-		} catch (Throwable t) {
-			request.setAttribute("javax.servlet.jsp.jspException", t);
-			return "/admin/jsp/errorpageMain.jsp";
-		}
-	}
-
-	protected String getDestination(String function,
-			${ClassNamePrefix}SessionController componentSC, HttpServletRequest request,
-			boolean isRedirect) throws PeasCoreException {
-		if (getViewMappings().containsKey(function)) {
-			ActionControllerSupport actionController = getViewMappings()
-					.get(function);		
-			String view = resolveView(actionController, componentSC, request,
-					isRedirect);
-			request.setAttribute("action", function);
-			return view;
-		}
-
-		throw new PeasCoreException(
-				"${ClassNamePrefix}RequestRouter.getDestination()",
-				SilverpeasRuntimeException.ERROR, "Action " + function
-						+ " doesn't match any controller");
-
-	}
-
-	protected String resolveView(
-			ActionControllerSupport actionController,
-			${ClassNamePrefix}SessionController componentSC, HttpServletRequest request,
-			boolean isRedirect) throws PeasCoreException {
-		actionController.setSessionController(componentSC);
-		String view = actionController.resolveView(request);
-		if (view == null) {
-			throw new PeasCoreException(
-					"${ClassNamePrefix}RequestRouter.getDestination()",
-					SilverpeasRuntimeException.ERROR, "Controller "
-							+ actionController.getClass().getName()
-							+ " can't resolve view");
-		}
-		if (view.startsWith("redirect:")) {
-			if (isRedirect) {
-				throw new PeasCoreException(
-						"${ClassNamePrefix}RequestRouter.getDestination()",
-						SilverpeasRuntimeException.ERROR,
-						"Circular redirection");
-			}
-			return getDestination(view.substring("redirect:".length()),
-					componentSC, request, true);
-		}
-		
-		return "/"+componentSC.getComponentName()+"/jsp/" + view;
-
-
-	}
-
+    @Override
 	public Map<String, ActionControllerSupport> getViewMappings() {
 		return viewMappings;
 	}

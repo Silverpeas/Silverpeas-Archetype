@@ -3,6 +3,9 @@
 #set( $symbol_escape = '\' )
 package ${package}.control;
 
+import com.silverpeas.webcore.ActionController;
+import com.silverpeas.webcore.ActionControllerSupport;
+
 import com.stratelia.webactiv.beans.admin.UserDetail;
 
 import javax.servlet.http.HttpServletRequest;
