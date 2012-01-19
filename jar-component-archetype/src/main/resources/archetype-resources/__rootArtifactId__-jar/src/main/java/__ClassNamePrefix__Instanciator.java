@@ -32,26 +32,26 @@ import com.stratelia.silverpeas.silvertrace.SilverTrace;
 import java.sql.Connection;
 
 
-public class ${className}Instanciator implements ComponentsInstanciatorIntf {
+public class ${ClassNamePrefix}Instanciator implements ComponentsInstanciatorIntf {
 
-  public ${className}Instanciator() {
+  public ${ClassNamePrefix}Instanciator() {
   }
 
   @Override
   public void create(Connection con, String spaceId, String componentId, String userId) throws InstanciationException {
-	  SilverTrace.info("${rootArtifactId}","${className}Instanciator.create()","root.MSG_GEN_ENTER_METHOD", "space = "+spaceId+", componentId = "+componentId+", userId ="+userId);
+	  SilverTrace.info("${rootArtifactId}","${ClassNamePrefix}Instanciator.create()","root.MSG_GEN_ENTER_METHOD", "space = "+spaceId+", componentId = "+componentId+", userId ="+userId);
 
 	  //insert your code here !
 	
-	  SilverTrace.info("${rootArtifactId}","${className}Instanciator.create()","root.MSG_GEN_EXIT_METHOD");
+	  SilverTrace.info("${rootArtifactId}","${ClassNamePrefix}Instanciator.create()","root.MSG_GEN_EXIT_METHOD");
   }
 
   @Override
   public void delete(Connection con, String spaceId, String componentId, String userId) throws InstanciationException {
-	  SilverTrace.info("${rootArtifactId}","${className}Instanciator.delete()","root.MSG_GEN_ENTER_METHOD","space = "+spaceId+", componentId = "+componentId+", userId ="+userId);
+	  SilverTrace.info("${rootArtifactId}","${ClassNamePrefix}Instanciator.delete()","root.MSG_GEN_ENTER_METHOD","space = "+spaceId+", componentId = "+componentId+", userId ="+userId);
 
 	  //insert your code here !
 
-	  SilverTrace.info("${rootArtifactId}","${className}Instanciator.delete()","root.MSG_GEN_EXIT_METHOD");
+	  SilverTrace.info("${rootArtifactId}","${ClassNamePrefix}Instanciator.delete()","root.MSG_GEN_EXIT_METHOD");
   }
 }

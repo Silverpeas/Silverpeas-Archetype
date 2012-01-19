@@ -64,6 +64,7 @@
     <module>jar-look-archetype</module>
     <module>jar-component-archetype</module>
     <module>ejb-component-archetype</module>
+    <module>jar-jpa-component-archetype</module>
   </modules>
   
 </project>

@@ -33,9 +33,9 @@ import com.stratelia.silverpeas.peasCore.MainSessionController;
 import com.stratelia.silverpeas.peasCore.ComponentContext;
 import com.stratelia.silverpeas.peasCore.ComponentSessionController;
 
-import ${package}.control.${className}SessionController;
+import ${package}.control.${ClassNamePrefix}SessionController;
 
-public class ${className}RequestRouter extends ComponentRequestRouter {
+public class ${ClassNamePrefix}RequestRouter extends ComponentRequestRouter {
 
   /**
    * This method has to be implemented in the component request rooter class.
@@ -44,7 +44,7 @@ public class ${className}RequestRouter extends ComponentRequestRouter {
    */
   @Override
   public String getSessionControlBeanName() {
-	    return "${className}";
+	    return "${ClassNamePrefix}";
 	}
 
   /**
@@ -60,7 +60,7 @@ public class ${className}RequestRouter extends ComponentRequestRouter {
    */
   @Override
   public ComponentSessionController createComponentSessionController(MainSessionController mainSessionCtrl, ComponentContext componentContext) {
-    return new ${className}SessionController(mainSessionCtrl, componentContext);
+    return new ${ClassNamePrefix}SessionController(mainSessionCtrl, componentContext);
   }
 
   /**
@@ -73,8 +73,8 @@ public class ${className}RequestRouter extends ComponentRequestRouter {
   @Override
   public String getDestination(String function, ComponentSessionController componentSC, HttpServletRequest request) {
     String destination = "";
-    ${className}SessionController  ${rootArtifactId}SC = (${className}SessionController)componentSC;
-    SilverTrace.info("${rootArtifactId}", "${className}RequestRouter.getDestination()", "root.MSG_GEN_PARAM_VALUE", "User=" + componentSC.getUserId() + " Function=" + function);
+    ${ClassNamePrefix}SessionController  ${rootArtifactId}SC = (${ClassNamePrefix}SessionController)componentSC;
+    SilverTrace.info("${rootArtifactId}", "${ClassNamePrefix}RequestRouter.getDestination()", "root.MSG_GEN_PARAM_VALUE", "User=" + componentSC.getUserId() + " Function=" + function);
 
     try {
       if (function.startsWith("Main")) {
@@ -88,7 +88,7 @@ public class ${className}RequestRouter extends ComponentRequestRouter {
       destination = "/admin/jsp/errorpageMain.jsp";
     }
 
-    SilverTrace.info("${rootArtifactId}", "${className}RequestRouter.getDestination()", "root.MSG_GEN_PARAM_VALUE", "Destination=" + destination);
+    SilverTrace.info("${rootArtifactId}", "${ClassNamePrefix}RequestRouter.getDestination()", "root.MSG_GEN_PARAM_VALUE", "Destination=" + destination);
     return destination;
   }
   
