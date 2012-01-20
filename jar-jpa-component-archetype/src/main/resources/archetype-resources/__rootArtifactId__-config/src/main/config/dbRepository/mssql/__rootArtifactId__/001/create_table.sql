@@ -1,1 +1,0 @@
--- Table names should be prefixed with sc_

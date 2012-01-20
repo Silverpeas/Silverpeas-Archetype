@@ -24,7 +24,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 -->
-<archetype-descriptor name="hyperlink">  
+<archetype-descriptor name="jar">  
   <requiredProperties>
     <requiredProperty key="className"></requiredProperty>
      <requiredProperty key="SilverpeasVersion"></requiredProperty>

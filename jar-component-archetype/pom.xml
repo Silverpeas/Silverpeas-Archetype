@@ -35,7 +35,6 @@
   
   <groupId>com.silverpeas.archetypes</groupId>
   <artifactId>jar-component-archetype</artifactId>
-  <version>${parent.version}</version>
   <packaging>maven-archetype</packaging>
   <name>Silverpeas Archetype with Jar component</name>
 </project>
