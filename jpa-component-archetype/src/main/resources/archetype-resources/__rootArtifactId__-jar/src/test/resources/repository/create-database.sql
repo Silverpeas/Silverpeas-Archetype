@@ -1,0 +1,1 @@
+CREATE TABLE sc_${rootArtifactId} (id int NOT NULL, componentId varchar(100) NULL, firstName varchar(255) NULL, lastName varchar(255) NULL);

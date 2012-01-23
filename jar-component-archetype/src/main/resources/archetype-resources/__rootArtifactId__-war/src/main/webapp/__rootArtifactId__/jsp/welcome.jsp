@@ -35,7 +35,7 @@
     <view:looknfeel />
   </head>
   <c:set var="componentId" value="${symbol_dollar}{requestScope.componentId}" />
-  <c:set var="sessionController">Silverpeas_${className}_<c:out value="${symbol_dollar}{componentId}" /></c:set>
+  <c:set var="sessionController">Silverpeas_${ClassNamePrefix}_<c:out value="${symbol_dollar}{componentId}" /></c:set>
   <fmt:setLocale value="${symbol_dollar}{sessionScope[sessionController].language}" />
   <view:setBundle bundle="${symbol_dollar}{requestScope.resources.multilangBundle}" />
   <view:setBundle bundle="${symbol_dollar}{requestScope.resources.iconsBundle}" var="icons" />

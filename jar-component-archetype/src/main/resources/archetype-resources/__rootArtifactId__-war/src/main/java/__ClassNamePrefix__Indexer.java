@@ -24,23 +24,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package ${package}.control;
+package ${package};
 
-import com.stratelia.silverpeas.peasCore.AbstractComponentSessionController;
-import com.stratelia.silverpeas.peasCore.MainSessionController;
 import com.stratelia.silverpeas.peasCore.ComponentContext;
+import com.stratelia.silverpeas.peasCore.MainSessionController;
+import com.stratelia.webactiv.applicationIndexer.control.ComponentIndexerInterface;
 
-public class ${className}SessionController extends AbstractComponentSessionController {
-  /**
-   * Standard Session Controller Constructor
-   *
-   *
-   * @param mainSessionCtrl   The user's profile
-   * @param componentContext  The component's profile
-   *
-   * @see
-   */
-  public ${className}SessionController(MainSessionController mainSessionCtrl, ComponentContext componentContext) {
-		super(mainSessionCtrl, componentContext,  "com.silverpeas.components.${rootArtifactId}.multilang.${className}Bundle", "com.silverpeas.components.${rootArtifactId}.settings.${className}Icons");
-	}
+public class ${ClassNamePrefix}Indexer implements ComponentIndexerInterface {
+
+  @Override
+  public void index(MainSessionController mainSessionCtrl, ComponentContext context) throws Exception {
+  }
 }
