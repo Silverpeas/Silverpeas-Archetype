@@ -47,7 +47,7 @@
   </suite>
   <visible>true</visible>
   <portlet>false</portlet>
-  <instanceClassName>${package}.${className}Instanciator</instanceClassName>
+  <instanceClassName>${package}.${ClassNamePrefix}Instanciator</instanceClassName>
 <profiles>
     <profile name="admin">
       <label>
