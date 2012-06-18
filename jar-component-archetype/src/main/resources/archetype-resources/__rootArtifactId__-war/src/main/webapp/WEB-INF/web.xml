@@ -31,13 +31,13 @@
   <display-name>${rootArtifactId} War</display-name>
   <description>no description</description>
   <servlet>
-    <servlet-name>${className}RequestRouter</servlet-name>
-    <display-name>${className}RequestRouter</display-name>
+    <servlet-name>${ClassNamePrefix}RequestRouter</servlet-name>
+    <display-name>${ClassNamePrefix}RequestRouter</display-name>
     <description>no description</description>
-    <servlet-class>${package}.servlets.${className}RequestRouter</servlet-class>
+    <servlet-class>${package}.servlets.${ClassNamePrefix}RequestRouter</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>${className}RequestRouter</servlet-name>
+    <servlet-name>${ClassNamePrefix}RequestRouter</servlet-name>
     <url-pattern>/R${rootArtifactId}/*</url-pattern>
   </servlet-mapping>
 </web-app>

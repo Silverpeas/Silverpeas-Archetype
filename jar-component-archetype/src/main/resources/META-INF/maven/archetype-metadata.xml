@@ -24,10 +24,10 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 -->
-<archetype-descriptor name="hyperlink">  
+<archetype-descriptor name="jar">  
   <requiredProperties>
-    <requiredProperty key="className"></requiredProperty>
-     <requiredProperty key="SilverpeasVersion"></requiredProperty>
+    <requiredProperty key="ClassNamePrefix"></requiredProperty>
+    <requiredProperty key="SilverpeasVersion"></requiredProperty>
   </requiredProperties>
   <modules>
     <module id="${rootArtifactId}-jar" dir="__rootArtifactId__-jar" name="${rootArtifactId}-jar">
@@ -51,6 +51,7 @@
         <fileSet filtered="true" encoding="UTF-8">
           <directory>src/main/webapp</directory>
           <includes>
+            <include>**/*.css</include>
             <include>**/*.jsp</include>
             <include>**/*.xml</include>
           </includes>
@@ -61,12 +62,12 @@
             <include>**/*.gif</include>
           </includes>
           <excludes>
+            <include>**/*.css</include>
             <exclude>**/*.xml</exclude>
             <exclude>**/*.jsp</exclude>
           </excludes>
         </fileSet>
       </fileSets>
-      
     </module>
     <module id="${rootArtifactId}-config" dir="__rootArtifactId__-config" name="${rootArtifactId}-config">
       <fileSets>
@@ -77,6 +78,7 @@
             <include>**/*.properties</include>
             <include>**/*.txt</include>
             <include>**/*.sql</include>
+            <include>**/*.st</include>
           </includes>
         </fileSet>
       </fileSets>
