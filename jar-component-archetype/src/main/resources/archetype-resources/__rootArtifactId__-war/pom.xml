@@ -49,7 +49,6 @@
       <groupId>com.silverpeas.core</groupId>
       <artifactId>web-core</artifactId>
       <version>${symbol_dollar}{core.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.silverpeas.core</groupId>
