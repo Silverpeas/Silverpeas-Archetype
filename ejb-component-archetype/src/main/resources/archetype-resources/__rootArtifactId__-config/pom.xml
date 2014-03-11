@@ -4,15 +4,13 @@
   <parent>
     <groupId>${groupId}</groupId>
     <artifactId>${rootArtifactId}</artifactId>
-    <version>${version}</version>
-    <relativePath>../pom.xml</relativePath>
+    <version>${SilverpeasVersion}</version>
   </parent>
 	
   <groupId>${groupId}.${rootArtifactId}</groupId>
   <artifactId>${artifactId}</artifactId>
   <packaging>pom</packaging>
-  <version>${version}</version>
-  <name>Configuration ${rootArtifactId}</name>
+  <name>${rootArtifactId} Configuration</name>
 
   <build>
     <plugins>

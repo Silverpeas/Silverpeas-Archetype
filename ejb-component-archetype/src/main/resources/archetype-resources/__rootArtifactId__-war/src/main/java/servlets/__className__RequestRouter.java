@@ -4,12 +4,12 @@
 
 package ${package}.servlets;
 
-import javax.servlet.http.HttpServletRequest;
 import com.stratelia.silverpeas.silvertrace.SilverTrace;
 import com.stratelia.silverpeas.peasCore.servlets.ComponentRequestRouter;
 import com.stratelia.silverpeas.peasCore.MainSessionController;
 import com.stratelia.silverpeas.peasCore.ComponentContext;
 import com.stratelia.silverpeas.peasCore.ComponentSessionController;
+import org.silverpeas.servlet.HttpRequest;
 
 import ${package}.control.${className}SessionController;
 
@@ -48,7 +48,7 @@ public class ${className}RequestRouter extends ComponentRequestRouter
      * @param componentSC The component Session Control, build and initialised.
      * @return The complete destination URL for a forward (ex : "/almanach/jsp/almanach.jsp?flag=user")
      */
-    public String getDestination(String function, ComponentSessionController componentSC, HttpServletRequest request)
+    public String getDestination(String function, ComponentSessionController componentSC, HttpRequest request)
     {
         String destination = "";
         ${className}SessionController  ${rootArtifactId}SC = (${className}SessionController)componentSC;

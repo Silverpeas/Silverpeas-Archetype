@@ -26,12 +26,12 @@
  */
 package ${package}.servlets;
 
-import javax.servlet.http.HttpServletRequest;
 import com.stratelia.silverpeas.silvertrace.SilverTrace;
 import com.stratelia.silverpeas.peasCore.servlets.ComponentRequestRouter;
 import com.stratelia.silverpeas.peasCore.MainSessionController;
 import com.stratelia.silverpeas.peasCore.ComponentContext;
 import com.stratelia.silverpeas.peasCore.ComponentSessionController;
+import org.silverpeas.servlet.HttpRequest;
 
 import ${package}.control.${ClassNamePrefix}SessionController;
 
@@ -71,7 +71,7 @@ public class ${ClassNamePrefix}RequestRouter extends ComponentRequestRouter<Comp
    * @return The complete destination URL for a forward (ex : "/almanach/jsp/almanach.jsp?flag=user")
    */
   @Override
-  public String getDestination(String function, ComponentSessionController componentSC, HttpServletRequest request) {
+  public String getDestination(String function, ComponentSessionController componentSC, HttpRequest request) {
     String destination = "";
     ${ClassNamePrefix}SessionController  ${rootArtifactId}SC = (${ClassNamePrefix}SessionController)componentSC;
     SilverTrace.info("${rootArtifactId}", "${ClassNamePrefix}RequestRouter.getDestination()", "root.MSG_GEN_PARAM_VALUE", "User=" + componentSC.getUserId() + " Function=" + function);

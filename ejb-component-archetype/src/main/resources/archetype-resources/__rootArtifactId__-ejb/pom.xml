@@ -5,15 +5,13 @@
   <parent>
     <groupId>${groupId}</groupId>
     <artifactId>${rootArtifactId}</artifactId>
-    <version>${version}</version>
-    <relativePath>../pom.xml</relativePath>
+    <version>${SilverpeasVersion}</version>
   </parent>
 	
   <groupId>${groupId}.${rootArtifactId}</groupId>
   <artifactId>${artifactId}</artifactId>
   <packaging>ejb</packaging>
-  <version>${version}</version>
-  <name>EJB ${rootArtifactId}</name>
+  <name>${rootArtifactId} EJB</name>
   
   <dependencies>
     <dependency>
