@@ -46,7 +46,7 @@
     </dependency>
     <dependency>
       <groupId>com.silverpeas.core.ejb-core</groupId>
-      <artifactId>silverstatistics</artifactId>
+      <artifactId>statistic</artifactId>
       <classifier>client</classifier>
       <version>${symbol_dollar}{core.version}</version>
       <scope>provided</scope>
