@@ -14,7 +14,7 @@
  * Open Source Software ("FLOSS") applications as described in Silverpeas's
  * FLOSS exception.  You should have received a copy of the text describing
  * the FLOSS exception, and it is also available here:
- * "http://repository.silverpeas.com/legal/licensing"
+ * "http://www.silverpeas.com/legal/licensing"
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -24,7 +24,30 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- 
-.${rootArtifactId}Name {
-	font-weight: bold;
+package ${package}.model;
+
+import org.silverpeas.persistence.model.identifier.UuidIdentifier;
+import org.silverpeas.persistence.model.jpa.AbstractJpaEntity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * It represents the business entities handled in the Silverpeas component. Its persistence is
+ * managed by the {@link ${package}.repository.${ClassNamePrefix}Repository} JPA repository.
+ * <p/>
+ * All the business methods related to this entity should be defined here.
+ */
+@Entity
+@Table(name = "SC_${ClassNamePrefix}")
+public final class ${ClassNamePrefix}
+    extends AbstractJpaEntity<${ClassNamePrefix}, UuidIdentifier> {
+
+  @Column(name = "instanceId", nullable = false)
+  private String componentInstanceId;
+
+  public String getComponentInstanceId() {
+    return componentInstanceId;
+  }
 }

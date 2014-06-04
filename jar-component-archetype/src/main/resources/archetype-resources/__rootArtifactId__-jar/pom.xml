@@ -51,5 +51,12 @@
       <version>${symbol_dollar}{core.version}</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>com.silverpeas.core.ejb-core</groupId>
+      <artifactId>node</artifactId>
+      <classifier>client</classifier>
+      <version>${symbol_dollar}{core.version}</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 </project>

@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 /**
- * Copyright (C) 2000 - 2011 Silverpeas
+ * Copyright (C) 2000 - 2014 Silverpeas
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -31,7 +31,10 @@ import com.silverpeas.admin.components.InstanciationException;
 import com.stratelia.silverpeas.silvertrace.SilverTrace;
 import java.sql.Connection;
 
-
+/**
+ * The instanciator is in charge of the spawning and of the cleaning up of an instance of the
+ * ${rootArtifactId} application.
+ */
 public class ${ClassNamePrefix}Instanciator implements ComponentsInstanciatorIntf {
 
   public ${ClassNamePrefix}Instanciator() {
@@ -41,7 +44,7 @@ public class ${ClassNamePrefix}Instanciator implements ComponentsInstanciatorInt
   public void create(Connection con, String spaceId, String componentId, String userId) throws InstanciationException {
 	  SilverTrace.info("${rootArtifactId}","${ClassNamePrefix}Instanciator.create()","root.MSG_GEN_ENTER_METHOD", "space = "+spaceId+", componentId = "+componentId+", userId ="+userId);
 
-	  //insert your code here !
+	  // TODO insert your initialization code here
 	
 	  SilverTrace.info("${rootArtifactId}","${ClassNamePrefix}Instanciator.create()","root.MSG_GEN_EXIT_METHOD");
   }
@@ -50,7 +53,7 @@ public class ${ClassNamePrefix}Instanciator implements ComponentsInstanciatorInt
   public void delete(Connection con, String spaceId, String componentId, String userId) throws InstanciationException {
 	  SilverTrace.info("${rootArtifactId}","${ClassNamePrefix}Instanciator.delete()","root.MSG_GEN_ENTER_METHOD","space = "+spaceId+", componentId = "+componentId+", userId ="+userId);
 
-	  //insert your code here !
+	  // TODO insert your cleaning code here
 
 	  SilverTrace.info("${rootArtifactId}","${ClassNamePrefix}Instanciator.delete()","root.MSG_GEN_EXIT_METHOD");
   }
