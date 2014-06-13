@@ -32,8 +32,8 @@
   <description>no description</description>
   <servlet>
     <description>The request router in charge of the routing of incoming requests and outgoing responses.</description>
-    <display-name>${ClassNamePrefix}RequestRouter</display-name>
-    <servlet-name>${ClassNamePrefix}RequestRouter</servlet-name>
+    <display-name>${rootArtifactId}RequestRouter</display-name>
+    <servlet-name>${rootArtifactId}RequestRouter</servlet-name>
     <servlet-class>com.stratelia.silverpeas.peasCore.servlets.WebComponentRequestRouter</servlet-class>
     <init-param>
       <param-name>WebComponentController</param-name>
@@ -41,7 +41,7 @@
     </init-param>
   </servlet>
   <servlet-mapping>
-    <servlet-name>${ClassNamePrefix}RequestRouter</servlet-name>
+    <servlet-name>${rootArtifactId}RequestRouter</servlet-name>
     <url-pattern>/R${rootArtifactId}/*</url-pattern>
   </servlet-mapping>
 </web-app>

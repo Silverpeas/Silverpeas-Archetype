@@ -43,20 +43,20 @@ public final class ${ClassNamePrefix}ComponentSettings {
    * component.
    */
   public static final String SETTINGS_PATH =
-    "org.silverpeas.components.${rootArtifactId}.settings.${ClassNamePrefix}Settings";
+    "org.silverpeas.components.${rootArtifactId}.settings.${rootArtifactId}Settings";
 
   /**
    * The relative path of the i18n bundle of the Silverpeas component.
    */
   public static final String MESSAGES_PATH =
-    "org.silverpeas.components.${rootArtifactId}.multilang.${ClassNamePrefix}Bundle";
+    "org.silverpeas.components.${rootArtifactId}.multilang.${rootArtifactId}Bundle";
 
   /**
    * The relative path of the properties file containing the references of the icons dedicated to
    * the Silverpeas component.
    */
   public static final String ICONS_PATH =
-    "org.silverpeas.components.${rootArtifactId}.settings.${ClassNamePrefix}Icons";
+    "org.silverpeas.components.${rootArtifactId}.settings.${rootArtifactId}Icons";
 
   /**
    * Gets all the messages for the Silverpeas component and translated in the specified language.

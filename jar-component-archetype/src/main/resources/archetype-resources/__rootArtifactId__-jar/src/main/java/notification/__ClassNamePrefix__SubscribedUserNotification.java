@@ -97,12 +97,12 @@ public final class ${ClassNamePrefix}SubscribedUserNotification
 
   @Override
   protected String getMultilangPropertyFile() {
-    return "org.silverpeas.components.${rootArtifactId}.multilang.${ClassNamePrefix}Bundle";
+    return "org.silverpeas.components.${rootArtifactId}.multilang.${rootArtifactId}Bundle";
   }
 
   @Override
   protected String getTemplatePath() {
-    return "${rootArtifactId}}";
+    return "${rootArtifactId}";
   }
 
   @Override
@@ -112,7 +112,7 @@ public final class ${ClassNamePrefix}SubscribedUserNotification
 
   @Override
   protected String getFileName() {
-    return "${ClassNamePrefix}SubscribedUserNotification";
+    return "${rootArtifactId}SubscribedUserNotification";
   }
 
   @Override
