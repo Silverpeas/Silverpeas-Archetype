@@ -32,8 +32,6 @@ import org.silverpeas.core.util.ServiceProvider;
 
 import ${package}.model.${ClassNamePrefix};
 
-import java.util.Collection;
-
 /**
  * A notifier on the changes in the state of a ${ClassNamePrefix} business object.
  */

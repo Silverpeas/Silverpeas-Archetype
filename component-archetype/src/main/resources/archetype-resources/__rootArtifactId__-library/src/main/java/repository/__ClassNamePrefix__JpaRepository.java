@@ -27,10 +27,11 @@
 package ${package}.repository;
 
 import ${package}.model.${ClassNamePrefix};
+import org.silverpeas.core.persistence.datasource.repository.jpa.NamedParameters;
 import org.silverpeas.core.persistence.datasource.repository.jpa.SilverpeasJpaEntityRepository;
-import org.silverpeas.core.util.ServiceProvider;
 
 import javax.inject.Singleton;
+import java.util.List;
 
 /**
  * Implementation of the repository of ${ClassNamePrefix} contributions by extending the
@@ -39,7 +40,7 @@ import javax.inject.Singleton;
  * and to get the business entities by using the JPA engine.
  */
 @Singleton
-public class ${ClassNamePrefix}Repository
+public class ${ClassNamePrefix}JpaRepository
     extends SilverpeasJpaEntityRepository<${ClassNamePrefix}>
     implements ${ClassNamePrefix}Repository {
 

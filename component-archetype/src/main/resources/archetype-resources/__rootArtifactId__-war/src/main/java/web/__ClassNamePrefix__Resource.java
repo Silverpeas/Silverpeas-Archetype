@@ -27,12 +27,12 @@
 package ${package}.web;
 
 import ${package}.model.${ClassNamePrefix};
-import org.silverpeas.core.util.SilverpeasList;
-import org.silverpeas.core.util.logging.SilverLogger;
-import org.silverpeas.core.webapi.base.annotation.Authorized;
 import org.silverpeas.core.annotation.RequestScoped;
 import org.silverpeas.core.annotation.Service;
+import org.silverpeas.core.util.SilverpeasList;
+import org.silverpeas.core.util.logging.SilverLogger;
 import org.silverpeas.core.webapi.base.RESTWebService;
+import org.silverpeas.core.webapi.base.annotation.Authorized;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -41,13 +41,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * A REST-based Web resource representing the ${ClassNamePrefix} contributions. Only authorized
@@ -100,8 +97,8 @@ public class ${ClassNamePrefix}Resource extends RESTWebService {
   @Path("{id}")
   @Produces(MediaType.APPLICATION_JSON)
   public ${ClassNamePrefix}Entity getById(@PathParam("id") String id) {
-    final Calendar calendar = process(() -> get${ClassNamePrefix}(id)).execute();
-    return asWebEntity(calendar);
+    final ${ClassNamePrefix} resource = process(() -> get${ClassNamePrefix}(id)).execute();
+    return asWebEntity(resource);
   }
 
   /**
@@ -115,13 +112,11 @@ public class ${ClassNamePrefix}Resource extends RESTWebService {
    */
   @POST
   @Produces(MediaType.APPLICATION_JSON)
-  public ${ClassNamePrefix} create${ClassNamePrefix}(${ClassNamePrefix}Entity entity) {
-    ${ClassNamePrefix} new${ClassNamePrefix} = entity.as${ClassNamePrefix}();
-    ${ClassNamePrefix} created${ClassNamePrefix} = process(() ->
-        new${ClassNamePrefix}.save()
-    ).execute();
+  public Response create${ClassNamePrefix}(${ClassNamePrefix}Entity entity) {
+    ${ClassNamePrefix} new${ClassNamePrefix} = entity.as${ClassNamePrefix}For(getComponentId());
+    ${ClassNamePrefix} created${ClassNamePrefix} = process(new${ClassNamePrefix}::save).execute();
     ${ClassNamePrefix}Entity createdEntity = asWebEntity(created${ClassNamePrefix});
-    return Response.created(createdEntity.getUri()).entity(createdEntity).build();
+    return Response.created(createdEntity.getURI()).entity(createdEntity).build();
   }
 
   /**
@@ -140,13 +135,12 @@ public class ${ClassNamePrefix}Resource extends RESTWebService {
   @PUT
   @Path("{id}")
   @Produces(MediaType.APPLICATION_JSON)
-  public CalendarEntity updateCalendar(@PathParam("id") String id, ${ClassNamePrefix} entity) {
+  public ${ClassNamePrefix}Entity update${ClassNamePrefix}(@PathParam("id") String id,
+        ${ClassNamePrefix}Entity entity) {
     final ${ClassNamePrefix} resource = get${ClassNamePrefix}(id);
     entity.update(resource);
-    ${ClassNamePrefix} updated${ClassNamePrefix} = process(() ->
-        resource.save()
-    ).execute();
-    return asWebEntity(updatedCalendar);
+    ${ClassNamePrefix} updated${ClassNamePrefix} = process(resource::save).execute();
+    return asWebEntity(updated${ClassNamePrefix});
   }
 
   /**
@@ -158,7 +152,7 @@ public class ${ClassNamePrefix}Resource extends RESTWebService {
    * @param id the identifier of the ${ClassNamePrefix} to delete
    */
   @DELETE
-  @Path("{calendarId}")
+  @Path("{id}")
   @Produces(MediaType.APPLICATION_JSON)
   public void deleteCalendar(@PathParam("id") String id) {
     final ${ClassNamePrefix} resource = get${ClassNamePrefix}(id);
@@ -170,19 +164,20 @@ public class ${ClassNamePrefix}Resource extends RESTWebService {
 
   private ${ClassNamePrefix} get${ClassNamePrefix}(final String id) {
     final ${ClassNamePrefix} resource = ${ClassNamePrefix}.getById(id);
-    if (resource == null || !resource.getComponentInstanceId().equals(getComponentInstanceId())) {
-      SilverLogger.getLogger(this).error("Unknown ${ClassNamePrefix} at {0}", getUri().getPath())
+    if (resource == null || !resource.getComponentInstanceId().equals(getComponentId())) {
+      SilverLogger.getLogger(this).error("Unknown ${ClassNamePrefix} at {0}", getUri().getPath());
       throw new WebApplicationException(Response.Status.NOT_FOUND);
     }
+    return resource;
   }
 
   private ${ClassNamePrefix}Entity asWebEntity(final ${ClassNamePrefix} resource) {
-    ${ClassNamePrefix}Entity entity = new ${ClassNamePrefix}Entity(resource)
+    return new ${ClassNamePrefix}Entity(resource)
         .identifiedBy(getUri().getAbsolutePathBuilder().path(resource.getId()).build());
   }
 
   private List<${ClassNamePrefix}Entity> asWebEntities(
-      final Collection<${ClassNamePrefix}> resources) {
-    return resources.stream().map(r -> asWebEntity(r)).collect(SilverpeasList.collector(resources));
+      final List<${ClassNamePrefix}> resources) {
+    return resources.stream().map(this::asWebEntity).collect(SilverpeasList.collector(resources));
   }
 }

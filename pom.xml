@@ -61,7 +61,7 @@
     </snapshotRepository>
   </distributionManagement>
   <modules>
-    <module>look-archetype</module>
+    <!--<module>look-archetype</module>-->
     <module>component-archetype</module>
   </modules>
   

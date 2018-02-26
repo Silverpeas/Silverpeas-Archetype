@@ -47,7 +47,7 @@ public final class ${ClassNamePrefix}SubscribedUserNotificationBuilder
     implements UserSubscriptionNotificationBehavior {
 
   private final NotifAction action;
-  private final Map<SubscriberType, Collection<String>> subscriberIdsByTypes = SubscriptionUtil.
+  private final SubscriptionSubscriberMapBySubscriberType subscriberIdsByTypes =
       new SubscriptionSubscriberMapBySubscriberType();
 
   public static ${ClassNamePrefix}SubscribedUserNotificationBuilder aboutCreationOf(
@@ -74,7 +74,7 @@ public final class ${ClassNamePrefix}SubscribedUserNotificationBuilder
   }
 
   @Override
-  protected void perform(final PostDetail resource) {
+  protected void perform(final ${ClassNamePrefix} resource) {
     super.perform(resource);
     getNotificationMetaData().displayReceiversInFooter();
   }

@@ -29,17 +29,17 @@ package ${package};
 import org.silverpeas.core.test.BasicCoreWarBuilder;
 
 /**
- * This builder extends the {@link WarBuilder} in order to centralize the
- * definition of common archive part definitions.
+ * This builder extends the {@link org.silverpeas.core.test.BasicCoreWarBuilder} in order to
+ * centralize the definition of common archive part definitions.
  */
-public class WarBuilderFor${rootArtifactId} extends BasicCoreWarBuilder {
+public class WarBuilder extends BasicCoreWarBuilder {
 
   /**
    * Constructs a war builder for the specified test class. It will load all the resources in the
    * same packages of the specified test class.
    * @param test the class of the test for which a war archive will be build.
    */
-  protected <T> WarBuilderFor${rootArtifactId}(final Class<T> test) {
+  protected <T> WarBuilder(final Class<T> test) {
     super(test);
     addMavenDependencies("org.silverpeas.core:silverpeas-core");
     addMavenDependencies("org.silverpeas.core.services:silverpeas-core-silverstatistics");
@@ -52,8 +52,8 @@ public class WarBuilderFor${rootArtifactId} extends BasicCoreWarBuilder {
    * Gets an instance of a war archive builder for the specified test class.
    * @return the instance of the war archive builder.
    */
-  public static <T> WarBuilderFor${rootArtifactId} onWarForTestClass(Class<T> test) {
-    return new WarBuilderFor${rootArtifactId}(test);
+  public static <T> WarBuilder onWarForTestClass(Class<T> test) {
+    return new WarBuilder(test);
   }
 
 }

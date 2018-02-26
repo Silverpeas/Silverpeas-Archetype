@@ -28,6 +28,9 @@ package ${package};
 
 import org.silverpeas.core.admin.component.ComponentInstancePreDestruction;
 
+import javax.inject.Named;
+import javax.transaction.Transactional;
+
 /**
  * Wipe out for the spawned ${rootArtifactId} instance the resources that were allocated to him.
  */

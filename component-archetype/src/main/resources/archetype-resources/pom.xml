@@ -34,6 +34,7 @@
   
   <groupId>${groupId}</groupId>
   <artifactId>${artifactId}</artifactId>
+  <version>${SilverpeasVersion}</version>
   <packaging>pom</packaging>
   <name>Silverpeas ${artifactId} Component</name>
 </project>

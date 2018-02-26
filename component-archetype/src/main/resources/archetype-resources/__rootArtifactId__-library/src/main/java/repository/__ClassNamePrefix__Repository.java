@@ -27,10 +27,10 @@
 package ${package}.repository;
 
 import ${package}.model.${ClassNamePrefix};
-import org.silverpeas.core.persistence.datasource.repository.jpa.SilverpeasJpaEntityRepository;
+import org.silverpeas.core.persistence.datasource.repository.EntityRepository;
 import org.silverpeas.core.util.ServiceProvider;
 
-import javax.inject.Singleton;
+import java.util.List;
 
 /**
  * This repository manages the persistence of ${ClassNamePrefix} contributions. It abstracts the

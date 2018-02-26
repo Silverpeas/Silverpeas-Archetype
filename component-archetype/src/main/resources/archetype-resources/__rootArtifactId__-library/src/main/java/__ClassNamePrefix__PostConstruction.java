@@ -28,6 +28,9 @@ package ${package};
 
 import org.silverpeas.core.admin.component.ComponentInstancePostConstruction;
 
+import javax.inject.Named;
+import javax.transaction.Transactional;
+
 /**
  * Create for the spawned ${rootArtifactId} instance the required resources to be functional.
  */

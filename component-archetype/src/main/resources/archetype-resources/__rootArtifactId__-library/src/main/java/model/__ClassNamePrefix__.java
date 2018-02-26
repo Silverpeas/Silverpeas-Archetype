@@ -26,18 +26,21 @@
  */
 package ${package}.model;
 
+import ${package}.repository.${ClassNamePrefix}Repository;
 import org.silverpeas.core.admin.user.model.User;
-import org.silverpeas.core.persistence.Transaction;
 import org.silverpeas.core.contribution.model.Contribution;
 import org.silverpeas.core.contribution.model.ContributionIdentifier;
+import org.silverpeas.core.persistence.Transaction;
 import org.silverpeas.core.persistence.datasource.model.identifier.UuidIdentifier;
 import org.silverpeas.core.persistence.datasource.model.jpa.SilverpeasJpaEntity;
-import ${package}.repository.${ClassNamePrefix}Repository;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.List;
 
 /**
  * It represents the business contribution handled in the Silverpeas component. Its persistence is
@@ -56,12 +59,20 @@ import java.util.Date;
         query = "from ${ClassNamePrefix} c where c.componentInstanceId = :componentInstanceId " +
             "order by c.componentInstanceId, c.id")
     })
-public final class ${ClassNamePrefix}
+public class ${ClassNamePrefix}
     extends SilverpeasJpaEntity<${ClassNamePrefix}, UuidIdentifier>
     implements Contribution {
 
   @Column(name = "instanceId", nullable = false)
   private String componentInstanceId;
+
+  /**
+   * Constrcuts a new ${ClassNamePrefix} instance that belongs to the specified component instance.
+   * @param componentInstanceId the unique identifier of a component instance.
+   */
+  public ${ClassNamePrefix}(final String componentInstanceId) {
+    this.componentInstanceId = componentInstanceId;
+  }
 
   /**
    * Gets a ${ClassNamePrefix} by its identifier.
@@ -73,9 +84,17 @@ public final class ${ClassNamePrefix}
     return repository.getById(id);
   }
 
+  /**
+   * Gets all ${ClassNamePrefix} belonging to the specified component instance. If the component
+   * instance doesn't exist or if no ${ClassNamePrefix} instances were created for this component
+   * instance, then an empty list is returned.
+   * @param instanceId the unique identifier of a component instance.
+   * @return a list of ${ClassNamePrefix} instances or an empty list if there is no
+   * ${ClassNamePrefix} belonging to the given component instance.
+   */
   public static List<${ClassNamePrefix}> getAllByComponentInstanceId(final String instanceId) {
     ${ClassNamePrefix}Repository repository = ${ClassNamePrefix}Repository.get();
-    return repository.getByComponentInstanceId(id);
+    return repository.getByComponentInstanceId(instanceId);
   }
 
   public String getComponentInstanceId() {
@@ -101,12 +120,12 @@ public final class ${ClassNamePrefix}
    * Saves this contribution state into the persistence context. If the contribution doesn't
    * exist yet its state is then persisted, otherwise its state is updated in the persistence
    * context.
+   * @return the saved ${ClassNamePrefix}.
    */
-  public void save() {
-    Transaction.performInOne(() -> {
+  public ${ClassNamePrefix} save() {
+    return Transaction.performInOne(() -> {
       ${ClassNamePrefix}Repository repository = ${ClassNamePrefix}Repository.get();
-      repository.save(this);
-      return null;
+      return repository.save(this);
     });
   }
 
@@ -115,7 +134,7 @@ public final class ${ClassNamePrefix}
    */
   public void delete() {
     Transaction.performInOne(() -> {
-      ${ClassNamePrefix}Repository repository = CalendarRepository.get();
+      ${ClassNamePrefix}Repository repository = ${ClassNamePrefix}Repository.get();
       repository.delete(this);
       return null;
     });

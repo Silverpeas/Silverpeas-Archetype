@@ -26,42 +26,35 @@
  */
 package ${package};
 
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.Archive;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.silverpeas.core.test.rule.DbSetupRule;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import org.silverpeas.core.test.BasicCoreWarBuilder;
 
 /**
- * Integration tests about the management of ${ClassNamePrefix} contributions.
+ * This builder extends the {@link org.silverpeas.core.test.BasicCoreWarBuilder} in order to
+ * centralize the definition of common archive part definitions.
  */
-@RunWith(Arquillian.class)
-public class ${ClassNamePrefix}ManagementIT {
+public class WarBuilder extends BasicCoreWarBuilder {
 
-  public static final String DATABASE_CREATION_SCRIPT = "/${package}/create_database.sql";
+  /**
+   * Constructs a war builder for the specified test class. It will load all the resources in the
+   * same packages of the specified test class.
+   * @param test the class of the test for which a war archive will be build.
+   */
+  protected <T> WarBuilder(final Class<T> test) {
+    super(test);
+    addMavenDependencies("org.silverpeas.core:silverpeas-core");
+    addMavenDependencies("org.silverpeas.core.services:silverpeas-core-silverstatistics");
+    addMavenDependencies("org.silverpeas.core.services:silverpeas-core-comment");
+    addMavenDependencies("${package}:silverpeas-${rootArtifactId}");
 
-  public static final String DATASET_SCRIPT = "/${package}/${rootArtifactId}-dataset.sql";
-
-  @Rule
-  public DbSetupRule dbSetupRule = DbSetupRule.createTablesFrom(DATABASE_CREATION_SCRIPT)
-      .loadInitialDataSetFrom(DATASET_SCRIPT);
-
-  @Deployment
-  public static Archive<?> createTestArchive() {
-    return WarBuilder.onWarForTestClass(${ClassNamePrefix}ManagementIT.class)
-      .addAsResource(DATABASE_CREATION_SCRIPT.substring(1))
-      .addAsResource(DATASET_SCRIPT.substring(1))
-      .build();
+    addAsResource("org/silverpeas/components/${rootArtifactId}/settings/${rootArtifactId}Settings.properties");
   }
 
-  @Test
-  public void emptyTest() {
-    // empty test
+  /**
+   * Gets an instance of a war archive builder for the specified test class.
+   * @return the instance of the war archive builder.
+   */
+  public static <T> WarBuilder onWarForTestClass(Class<T> test) {
+    return new WarBuilder(test);
   }
 
 }

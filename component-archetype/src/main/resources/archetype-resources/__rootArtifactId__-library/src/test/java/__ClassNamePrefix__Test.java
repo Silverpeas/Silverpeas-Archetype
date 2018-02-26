@@ -29,20 +29,20 @@ package ${package};
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.silverpeas.core.test.rule.CommonAPI4Test;
+import ${package}.repository.${ClassNamePrefix}Repository;
 import org.silverpeas.core.admin.service.OrganizationController;
 import org.silverpeas.core.admin.user.model.UserDetail;
-import ${package}.repository.${ClassNamePrefix}Repository;
+import org.silverpeas.core.persistence.datasource.OperationContext;
+import org.silverpeas.core.test.rule.CommonAPI4Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 /**
  * Unit tests about the ${ClassNamePrefix} contributions.
  */
-public interface ${ClassNamePrefix}Test {
+public class ${ClassNamePrefix}Test {
 
   @Rule
   public CommonAPI4Test commonAPI4Test = new CommonAPI4Test();

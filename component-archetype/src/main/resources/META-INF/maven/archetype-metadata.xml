@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2000 - 2011 Silverpeas
+    Copyright (C) 2000 - 2018 Silverpeas
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -78,6 +78,22 @@
           <directory>src/main/java</directory>
           <includes>
             <include>**/*.java</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/integration-test/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/integration-test/resources</directory>
+          <includes>
+            <include>**/*.xml</include>
+            <include>**/*.properties</include>
+            <include>**/*.txt</include>
+            <include>**/*.sql</include>
+            <include>**/*.st</include>
           </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">

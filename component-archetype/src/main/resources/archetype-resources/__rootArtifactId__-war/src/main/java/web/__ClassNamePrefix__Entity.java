@@ -26,16 +26,15 @@
  */
 package ${package}.web;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ${package}.model.${ClassNamePrefix};
 import org.silverpeas.core.webapi.base.WebEntity;
-import java.net.URI;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Date;
+import java.net.URI;
 
 /**
  * It represents the Web entity of a ${ClassNamePrefix} state from which a representation (usually
@@ -71,9 +70,25 @@ public final class ${ClassNamePrefix}Entity implements WebEntity {
     return this.uri;
   }
 
+  public String getId() {
+    return this.id;
+  }
+
+  /**
+   * Gets the ${ClassNamePrefix} business object represented by this entity and for the specified
+   * component instance.
+   * @param componentInstanceId the unique identifier of a component instance.
+   * @return ${ClassNamePrefix} the business object represented by this entity.
+   */
+  public ${ClassNamePrefix} as${ClassNamePrefix}For(final String componentInstanceId) {
+    ${ClassNamePrefix} resource = new ${ClassNamePrefix}(componentInstanceId);
+    // TODO fill the resource with the required properties
+    return resource;
+  }
+
   /**
    * Updates the specified resource with the changes in this entity.
-   * @param ${ClassNamePrefix} the resource to update.
+   * @param resource the resource to update.
    */
   public void update(final ${ClassNamePrefix} resource) {
     // TODO update the properties of the specified resource if they have changed
