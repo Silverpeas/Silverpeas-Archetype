@@ -46,4 +46,9 @@ public interface ${ClassNamePrefix}Repository extends EntityRepository<${ClassNa
     return ServiceProvider.getService(${ClassNamePrefix}Repository.class);
   }
 
+  /**
+   * Gets all ${ClassNamePrefix} instances belonging to the specified component instance.
+   * @param componentInstanceId the unique identifier of a component instance.
+   */
+  List<${ClassNamePrefix}> getByComponentInstanceId(String componentInstanceId);
 }

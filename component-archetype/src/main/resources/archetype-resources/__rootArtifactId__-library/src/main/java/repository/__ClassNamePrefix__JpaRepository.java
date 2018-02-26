@@ -43,4 +43,10 @@ public class ${ClassNamePrefix}Repository
     extends SilverpeasJpaEntityRepository<${ClassNamePrefix}>
     implements ${ClassNamePrefix}Repository {
 
+  @Override
+  public List<${ClassNamePrefix}> getByComponentInstanceId(final String componentInstanceId) {
+    NamedParameters parameters = newNamedParameters();
+    return findByNamedQuery("${ClassNamePrefix}ByComponentInstanceId",
+    parameters.add("componentInstanceId", componentInstanceId));
+  }
 }

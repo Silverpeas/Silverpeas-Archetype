@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 /**
- * Copyright (C) 2000 - 2014 Silverpeas
+ * Copyright (C) 2000 - 2018 Silverpeas
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -58,10 +58,13 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 /**
+ * <p>
  * The Web Component Controller of the application.
- * <p/>
+ * </p>
+ * <p>
  * It takes in charge, per user, the web navigation of the user in the application. It is a session
  * scoped bean; it is instantiated for each user session.
+ * </p>
  */
 @WebComponentController(${ClassNamePrefix}ComponentSettings.COMPONENT_NAME)
 public class ${ClassNamePrefix}WebController extends

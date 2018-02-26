@@ -42,9 +42,20 @@ import java.util.Date;
 /**
  * It represents the business contribution handled in the Silverpeas component. Its persistence is
  * managed by the {@link ${package}.repository.${ClassNamePrefix}Repository} JPA repository.
+ *
+ * TODO by default the persistence entity and the contribution are merged into this single business
+ * object. Nevertheless, according to the context, it would be more pertinent to modelize the
+ * business entity into a Contribution object whose the state is itself represented by a persistent
+ * entity (delegation pattern).
  */
 @Entity
 @Table(name = "SC_${ClassNamePrefix}")
+@NamedQueries({
+    @NamedQuery(
+        name = "${ClassNamePrefix}ByComponentInstanceId",
+        query = "from ${ClassNamePrefix} c where c.componentInstanceId = :componentInstanceId " +
+            "order by c.componentInstanceId, c.id")
+    })
 public final class ${ClassNamePrefix}
     extends SilverpeasJpaEntity<${ClassNamePrefix}, UuidIdentifier>
     implements Contribution {
@@ -60,6 +71,11 @@ public final class ${ClassNamePrefix}
   public static ${ClassNamePrefix} getById(final String id) {
     ${ClassNamePrefix}Repository repository = ${ClassNamePrefix}Repository.get();
     return repository.getById(id);
+  }
+
+  public static List<${ClassNamePrefix}> getAllByComponentInstanceId(final String instanceId) {
+    ${ClassNamePrefix}Repository repository = ${ClassNamePrefix}Repository.get();
+    return repository.getByComponentInstanceId(id);
   }
 
   public String getComponentInstanceId() {
@@ -82,8 +98,10 @@ public final class ${ClassNamePrefix}
   }
 
   /**
-   * Saves this contribution into the persistence context.
-  */
+   * Saves this contribution state into the persistence context. If the contribution doesn't
+   * exist yet its state is then persisted, otherwise its state is updated in the persistence
+   * context.
+   */
   public void save() {
     Transaction.performInOne(() -> {
       ${ClassNamePrefix}Repository repository = ${ClassNamePrefix}Repository.get();
