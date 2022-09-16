@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 /*
- * Copyright (C) 2000 - 2018 Silverpeas
+ * Copyright (C) 2000 - 2022 Silverpeas
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -14,7 +14,7 @@
  * Open Source Software ("FLOSS") applications as described in Silverpeas's
  * FLOSS exception.  You should have received a copy of the text describing
  * the FLOSS exception, and it is also available here:
- * "http://www.silverpeas.com/legal/licensing"
+ * "https://www.silverpeas.com/legal/licensing"
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,51 +22,64 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package ${package};
 
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.mockito.stubbing.Answer;
 import ${package}.repository.${ClassNamePrefix}Repository;
 import org.silverpeas.core.admin.service.OrganizationController;
+import org.silverpeas.core.admin.user.model.User;
 import org.silverpeas.core.admin.user.model.UserDetail;
+import org.silverpeas.core.admin.user.service.UserProvider;
 import org.silverpeas.core.persistence.datasource.OperationContext;
-import org.silverpeas.core.test.rule.CommonAPI4Test;
+import org.silverpeas.core.test.extention.EnableSilverTestEnv;
+import org.silverpeas.core.test.extention.TestManagedMock;
 
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
 /**
  * Unit tests about the ${ClassNamePrefix} contributions.
  */
-public class ${ClassNamePrefix}Test {
+@EnableSilverTestEnv
+class ${ClassNamePrefix}Test {
 
-  @Rule
-  public CommonAPI4Test commonAPI4Test = new CommonAPI4Test();
+  private static final String USER_ID = "0";
 
-  @Before
-  public void mockRequiredResources() {
-    ${ClassNamePrefix}Repository repository = mock(${ClassNamePrefix}Repository.class);
-    OrganizationController organizationController = mock(OrganizationController.class);
-    commonAPI4Test.injectIntoMockedBeanContainer(repository);
-    commonAPI4Test.injectIntoMockedBeanContainer(organizationController);
-    when(organizationController.getUserDetail(anyString())).thenAnswer(a -> {
+  @BeforeEach
+  @SuppressWarnings("JUnitMalformedDeclaration")
+  public void mockRequiredResources(
+      @TestManagedMock ${ClassNamePrefix}Repository repository,
+      @TestManagedMock OrganizationController organizationController,
+      @TestManagedMock UserProvider userProvider) {
+    Answer<? extends User> userAnswer = a -> {
       String id = a.getArgument(0);
       UserDetail user = new UserDetail();
       user.setId(id);
       return user;
+    };
+    when(userProvider.getUser(anyString())).thenAnswer(userAnswer);
+    when(organizationController.getUserDetail(anyString())).thenAnswer(userAnswer);
+
+    when(repository.getById(anyString())).thenAnswer(i -> {
+      String id = i.getArgument(0);
+      return null;
     });
 
-    OperationContext.fromUser("0");
+    OperationContext.fromUser(USER_ID);
 
   }
 
   @Test
-  public void emptyTest() {
-    // empty test
+  @DisplayName("An empty test to check the test bootstrapping is working fine")
+  void emptyTest() {
+    assertThat(true, is(true));
   }
 
 }

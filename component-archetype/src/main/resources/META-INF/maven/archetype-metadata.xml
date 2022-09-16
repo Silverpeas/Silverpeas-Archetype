@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2000 - 2018 Silverpeas
+    Copyright (C) 2000 - 2022 Silverpeas
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -11,9 +11,9 @@
     As a special exception to the terms and conditions of version 3.0 of
     the GPL, you may redistribute this Program in connection with Free/Libre
     Open Source Software ("FLOSS") applications as described in Silverpeas's
-    FLOSS exception.  You should have recieved a copy of the text describing
+    FLOSS exception.  You should have received a copy of the text describing
     the FLOSS exception, and it is also available here:
-    "http://www.silverpeas.com/legal/licensing"
+    "https://www.silverpeas.com/legal/licensing"
 
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -21,13 +21,13 @@
     GNU Affero General Public License for more details.
 
     You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 -->
 <archetype-descriptor name="jar">  
   <requiredProperties>
-    <requiredProperty key="ClassNamePrefix"></requiredProperty>
-    <requiredProperty key="SilverpeasVersion"></requiredProperty>
+    <requiredProperty key="ClassNamePrefix"/>
+    <requiredProperty key="SilverpeasVersion"/>
   </requiredProperties>
   <modules>
     <module id="silverpeas-${rootArtifactId}" dir="__rootArtifactId__-library" name="${rootArtifactId}-library">
@@ -38,20 +38,22 @@
             <include>**/*.java</include>
           </includes>
         </fileSet>
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/integration-test/java</directory>
           <includes>
             <include>**/*.java</include>
           </includes>
         </fileSet>
-        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
           <directory>src/integration-test/resources</directory>
           <includes>
-            <include>**/*.xml</include>
-            <include>**/*.properties</include>
-            <include>**/*.txt</include>
-            <include>**/*.sql</include>
-            <include>**/*.st</include>
+            <include>**/*</include>
           </includes>
         </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
@@ -60,14 +62,10 @@
             <include>**/*.java</include>
           </includes>
         </fileSet>
-        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+        <fileSet filtered="true" encoding="UTF-8">
           <directory>src/test/resources</directory>
           <includes>
-            <include>**/*.xml</include>
-            <include>**/*.properties</include>
-            <include>**/*.txt</include>
-            <include>**/*.sql</include>
-            <include>**/*.st</include>
+            <include>**/*</include>
           </includes>
         </fileSet>
       </fileSets>
@@ -86,14 +84,10 @@
             <include>**/*.java</include>
           </includes>
         </fileSet>
-        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+        <fileSet filtered="true" encoding="UTF-8">
           <directory>src/integration-test/resources</directory>
           <includes>
-            <include>**/*.xml</include>
-            <include>**/*.properties</include>
-            <include>**/*.txt</include>
-            <include>**/*.sql</include>
-            <include>**/*.st</include>
+            <include>**/*</include>
           </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">

@@ -1,8 +1,8 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-/**
- * Copyright (C) 2000 - 2018 Silverpeas
+/*
+ * Copyright (C) 2000 - 2022 Silverpeas
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -14,7 +14,7 @@
  * Open Source Software ("FLOSS") applications as described in Silverpeas's
  * FLOSS exception.  You should have received a copy of the text describing
  * the FLOSS exception, and it is also available here:
- * "http://www.silverpeas.com/legal/licensing"
+ * "https://www.silverpeas.com/legal/licensing"
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,22 +22,22 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package ${package}.web;
 
 import ${package}.model.${ClassNamePrefix};
-import org.silverpeas.core.annotation.RequestScoped;
-import org.silverpeas.core.annotation.Service;
+import org.silverpeas.core.annotation.WebService;
 import org.silverpeas.core.util.SilverpeasList;
 import org.silverpeas.core.util.logging.SilverLogger;
-import org.silverpeas.core.webapi.base.RESTWebService;
-import org.silverpeas.core.webapi.base.annotation.Authorized;
+import org.silverpeas.core.web.rs.RESTWebService;
+import org.silverpeas.core.web.rs.annotation.Authorized;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -51,8 +51,7 @@ import java.util.List;
  * users can access these resources.
  * TODO update the code to your context.
  */
-@Service
-@RequestScoped
+@WebService
 @Path("${rootArtifactId}/{componentInstanceId}")
 @Authorized
 public class ${ClassNamePrefix}Resource extends RESTWebService {
@@ -111,6 +110,7 @@ public class ${ClassNamePrefix}Resource extends RESTWebService {
    * ${ClassNamePrefix}.
    */
   @POST
+  @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
   public Response create${ClassNamePrefix}(${ClassNamePrefix}Entity entity) {
     ${ClassNamePrefix} new${ClassNamePrefix} = entity.as${ClassNamePrefix}For(getComponentId());
@@ -134,6 +134,7 @@ public class ${ClassNamePrefix}Resource extends RESTWebService {
    */
   @PUT
   @Path("{id}")
+  @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
   public ${ClassNamePrefix}Entity update${ClassNamePrefix}(@PathParam("id") String id,
         ${ClassNamePrefix}Entity entity) {
@@ -153,8 +154,7 @@ public class ${ClassNamePrefix}Resource extends RESTWebService {
    */
   @DELETE
   @Path("{id}")
-  @Produces(MediaType.APPLICATION_JSON)
-  public void deleteCalendar(@PathParam("id") String id) {
+  public void delete${ClassNamePrefix}(@PathParam("id") String id) {
     final ${ClassNamePrefix} resource = get${ClassNamePrefix}(id);
     process(() -> {
       resource.delete();

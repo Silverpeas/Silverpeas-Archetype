@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 /*
- * Copyright (C) 2000 - 2018 Silverpeas
+ * Copyright (C) 2000 - 2022 Silverpeas
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -14,7 +14,7 @@
  * Open Source Software ("FLOSS") applications as described in Silverpeas's
  * FLOSS exception.  You should have received a copy of the text describing
  * the FLOSS exception, and it is also available here:
- * "http://www.silverpeas.com/legal/licensing"
+ * "https://www.silverpeas.com/legal/licensing"
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,12 +22,11 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package ${package}.model;
 
 import ${package}.repository.${ClassNamePrefix}Repository;
-import org.silverpeas.core.admin.user.model.User;
 import org.silverpeas.core.contribution.model.Contribution;
 import org.silverpeas.core.contribution.model.ContributionIdentifier;
 import org.silverpeas.core.persistence.Transaction;
@@ -36,10 +35,8 @@ import org.silverpeas.core.persistence.datasource.model.jpa.SilverpeasJpaEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -53,12 +50,10 @@ import java.util.List;
  */
 @Entity
 @Table(name = "SC_${ClassNamePrefix}")
-@NamedQueries({
-    @NamedQuery(
-        name = "${ClassNamePrefix}ByComponentInstanceId",
-        query = "from ${ClassNamePrefix} c where c.componentInstanceId = :componentInstanceId " +
+@NamedQuery(
+    name = "${ClassNamePrefix}ByComponentInstanceId",
+    query = "select c from ${ClassNamePrefix} c where c.componentInstanceId = :componentInstanceId " +
             "order by c.componentInstanceId, c.id")
-    })
 public class ${ClassNamePrefix}
     extends SilverpeasJpaEntity<${ClassNamePrefix}, UuidIdentifier>
     implements Contribution {
@@ -67,7 +62,14 @@ public class ${ClassNamePrefix}
   private String componentInstanceId;
 
   /**
-   * Constrcuts a new ${ClassNamePrefix} instance that belongs to the specified component instance.
+   *  Constructs a new empty ${ClassNamePrefix} instance.
+   */
+  protected ${ClassNamePrefix}() {
+    // this constructor is for the persistence engine.
+  }
+
+  /**
+   * Constructs a new ${ClassNamePrefix} instance that belongs to the specified component instance.
    * @param componentInstanceId the unique identifier of a component instance.
    */
   public ${ClassNamePrefix}(final String componentInstanceId) {
@@ -102,18 +104,8 @@ public class ${ClassNamePrefix}
   }
 
   @Override
-  public ContributionIdentifier getContributionId() {
+  public ContributionIdentifier getIdentifier() {
     return ContributionIdentifier.from(componentInstanceId, getId(), getContributionType());
-  }
-
-  @Override
-  public User getLastModifier() {
-    return getLastUpdater();
-  }
-
-  @Override
-  public Date getLastModificationDate() {
-    return getLastUpdateDate();
   }
 
   /**

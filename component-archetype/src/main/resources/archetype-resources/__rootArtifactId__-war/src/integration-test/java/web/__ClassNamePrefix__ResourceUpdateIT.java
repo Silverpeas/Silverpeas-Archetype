@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 /*
- * Copyright (C) 2000 - 2018 Silverpeas
+ * Copyright (C) 2000 - 2022 Silverpeas
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -14,7 +14,7 @@
  * Open Source Software ("FLOSS") applications as described in Silverpeas's
  * FLOSS exception.  You should have received a copy of the text describing
  * the FLOSS exception, and it is also available here:
- * "http://www.silverpeas.com/legal/licensing"
+ * "https://www.silverpeas.com/legal/licensing"
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,7 +22,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package ${package}.web;
 
@@ -30,10 +30,11 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import ${package}.WarBuilder;
-import ${package}.model.Toto;
+import ${package}.${ClassNamePrefix}WarBuilder;
+import ${package}.model.${ClassNamePrefix};
 import org.silverpeas.core.admin.user.model.User;
 import org.silverpeas.web.ResourceUpdateTest;
 
@@ -42,67 +43,89 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 /**
- * Integration tests about the management of ${ClassNamePrefix} contributions.
+ * Integration tests about the modification of ${ClassNamePrefix} contributions.
  */
 @RunWith(Arquillian.class)
 public class ${ClassNamePrefix}ResourceUpdateIT extends ResourceUpdateTest {
 
-  public static final String DATABASE_CREATION_SCRIPT = "/${package}/create_database.sql";
+  private static final String DATABASE_CREATION_SCRIPT = "/${rootArtifactId}-database.sql";
 
-  public static final String DATASET_SCRIPT = "/${package}/${rootArtifactId}-dataset.sql";
+  private static final String DATASET_SCRIPT = "/${rootArtifactId}-dataset.sql";
 
-  private String sessionKey;
+  private static final String EXPECTED_ID = "45d42847-2009-4ca8-86bb-1918909dc094";
 
-  public ${ClassNamePrefix}ResourceUpdateIT() {
-    dbSetupRule.loadInitialDataSetFrom(DATASET_SCRIPT);
-  }
-
-  @Override
-  protected String getCreationTable() {
-    return DATABASE_CREATION_SCRIPT;
-  }
+  private String authToken;
+  private ${ClassNamePrefix}Entity expected;
 
   @Deployment
   public static Archive<?> createTestArchive() {
-    return WarBuilder.onWarForTestClass(${ClassNamePrefix}ResourceUpdateIT.class)
-      .addAsResource(DATABASE_CREATION_SCRIPT.substring(1))
-      .addAsResource(DATASET_SCRIPT.substring(1))
-      .build();
+    return ${ClassNamePrefix}WarBuilder.onWarForTestClass(${ClassNamePrefix}ResourceUpdateIT.class)
+    .addRESTWebServiceEnvironment()
+    .addAsResource(DATABASE_CREATION_SCRIPT.substring(1))
+    .addAsResource(DATASET_SCRIPT.substring(1))
+    .build();
+  }
+
+  @Override
+  protected String getTableCreationScript() {
+    return DATABASE_CREATION_SCRIPT;
+  }
+
+  @Override
+  protected String getDataSetScript() {
+    return DATASET_SCRIPT;
   }
 
   @Before
   public void prepareTestResources() {
-    sessionKey = getTokenKeyOf(getSilverpeasEnvironmentTest().createDefaultUser());
+    authToken = getTokenKeyOf(User.getById("1"));
+    expected = new ${ClassNamePrefix}Entity(${ClassNamePrefix}.getById(EXPECTED_ID));
+  }
+
+  @Override
+  @Test
+  @Ignore
+  public void updateOfAResourceFromAnInvalidOne() {
+    // TODO remove it once the entity validity is implemented in ${ClassNamePrefix}Resource
+  }
+
+  @Override
+  @Test
+  @Ignore
+  public void updateWithAnInvalidResourceState() {
+    // TODO remove it once the entity validity is implemented in ${ClassNamePrefix}Resource
   }
 
   @Test
   public void emptyTest() {
-    // empty test
+    assertThat(true, is(true));
   }
 
   @Override
   public String aResourceURI() {
-    return "${rootArtifactId}/k2/1";
+    return "${rootArtifactId}/" + getExistingComponentInstances()[0] + "/" + EXPECTED_ID;
   }
 
   @Override
   public String anUnexistingResourceURI() {
-    return "${rootArtifactId}/k2/2}";
+    return "${rootArtifactId}/" + getExistingComponentInstances()[0] + "/100";
   }
 
   @Override
-  public ${ClassNamePrefix} aResource() {
-    return ${ClassNamePrefix}.getById("1");
+  @SuppressWarnings("unchecked")
+  public ${ClassNamePrefix}Entity aResource() {
+    return expected;
   }
 
   @Override
-  public User anInvalidResource() {
-    return User.getById("0");
+  @SuppressWarnings("unchecked")
+  public ${ClassNamePrefix}Entity anInvalidResource() {
+    return new ${ClassNamePrefix}Entity();
   }
 
   @Override
   public String getAPITokenValue() {
-    return sessionKey;
+    return authToken;
   }
 
   @Override
@@ -112,7 +135,7 @@ public class ${ClassNamePrefix}ResourceUpdateIT extends ResourceUpdateTest {
 
   @Override
   public String[] getExistingComponentInstances() {
-    return new String[]{"k1", "k2"};
+    return new String[]{"${rootArtifactId}1", "${rootArtifactId}2"};
   }
 
 }

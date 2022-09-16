@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 /*
- * Copyright (C) 2000 - 2018 Silverpeas
+ * Copyright (C) 2000 - 2022 Silverpeas
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -14,7 +14,7 @@
  * Open Source Software ("FLOSS") applications as described in Silverpeas's
  * FLOSS exception.  You should have received a copy of the text describing
  * the FLOSS exception, and it is also available here:
- * "http://www.silverpeas.com/legal/licensing"
+ * "https://www.silverpeas.com/legal/licensing"
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,29 +22,31 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package ${package};
 
-import org.silverpeas.core.test.BasicCoreWarBuilder;
+import org.silverpeas.core.test.BasicWarBuilder;
 
 /**
  * This builder extends the {@link org.silverpeas.core.test.BasicCoreWarBuilder} in order to
  * centralize the definition of common archive part definitions.
  */
-public class WarBuilder extends BasicCoreWarBuilder {
+public class ${ClassNamePrefix}WarBuilder extends BasicWarBuilder {
 
   /**
    * Constructs a war builder for the specified test class. It will load all the resources in the
    * same packages of the specified test class.
    * @param test the class of the test for which a war archive will be build.
    */
-  protected <T> WarBuilder(final Class<T> test) {
+  protected <T> ${ClassNamePrefix}WarBuilder(final Class<T> test) {
     super(test);
-    addMavenDependencies("org.silverpeas.core:silverpeas-core");
+    addMavenDependenciesWithPersistence("org.silverpeas.core:silverpeas-core-api");
+    addMavenDependenciesWithPersistence("org.silverpeas.core:silverpeas-core");
     addMavenDependencies("org.silverpeas.core.services:silverpeas-core-silverstatistics");
     addMavenDependencies("org.silverpeas.core.services:silverpeas-core-comment");
-    addMavenDependencies("${package}:silverpeas-${rootArtifactId}");
+    addMavenDependencies("org.silverpeas.core:silverpeas-core-test");
+    addPackages(true, test.getPackageName());
 
     addAsResource("org/silverpeas/components/${rootArtifactId}/settings/${rootArtifactId}Settings.properties");
   }
@@ -53,8 +55,8 @@ public class WarBuilder extends BasicCoreWarBuilder {
    * Gets an instance of a war archive builder for the specified test class.
    * @return the instance of the war archive builder.
    */
-  public static <T> WarBuilder onWarForTestClass(Class<T> test) {
-    return new WarBuilder(test);
+  public static <T> ${ClassNamePrefix}WarBuilder onWarForTestClass(Class<T> test) {
+    return new ${ClassNamePrefix}WarBuilder(test);
   }
 
 }

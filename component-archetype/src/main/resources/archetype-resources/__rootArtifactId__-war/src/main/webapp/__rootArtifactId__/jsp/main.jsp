@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 <%--
 
-    Copyright (C) 2000 - 2018 Silverpeas
+    Copyright (C) 2000 - 2022 Silverpeas
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -15,7 +15,7 @@
     Open Source Software ("FLOSS") applications as described in Silverpeas's
     FLOSS exception.  You should have received a copy of the text describing
     the FLOSS exception, and it is also available here:
-    "http://www.silverpeas.com/legal/licensing"
+    "https://www.silverpeas.com/legal/licensing"
 
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -23,13 +23,14 @@
     GNU Affero General Public License for more details.
 
     You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 --%>
 <%@ include file="check.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.silverpeas.com/tld/viewGenerator" prefix="view"%>
+<%@ taglib uri="http://www.silverpeas.com/tld/silverFunctions" prefix="silfn" %>
 
 <c:set var="componentId"         value="${symbol_dollar}{requestScope.browseContext[3]}"/>
 <c:set var="currentUserLanguage" value="${symbol_dollar}{requestScope.resources.language}"/>
@@ -40,60 +41,46 @@
 <fmt:message key="${rootArtifactId}.menu.item.subscribe"   var="subscribeLabel"/>
 <fmt:message key="${rootArtifactId}.menu.item.unsubscribe" var="unsubscribeLabel"/>
 
+<c:set var="componentId"      value="${requestScope.browseContext[3]}"/>
+<c:url var="componentUriBase" value="${requestScope.componentUriBase}"/>
+<c:set var="currentUser"      value="${requestScope.currentUser}"/>
+<c:set var="highestUserRole"  value="${requestScope.highestUserRole}"/>
 <c:set var="isUserSubscribed" value="${requestScope.isUserSubscribed}"/>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-<html>
-  <head>
-    <view:looknfeel />
+<view:sp-page>
+  <view:sp-head-part>
+    <view:includePlugin name="subscription"/>
     <script type="application/javascript">
-      function successUnsubscribe() {
-        setSubscriptionMenu('<view:encodeJs string="${symbol_dollar}{subscribeLabel}" />', 'subscribe');
-      }
-
-      function successSubscribe() {
-        setSubscriptionMenu('<view:encodeJs string="${symbol_dollar}{unsubscribeLabel}" />', 'unsubscribe');
-      }
-      function setSubscriptionMenu(label, actionMethodName) {
-        var ${symbol_dollar}menuLabel = $("#subscriptionMenuLabel");
-        ${symbol_dollar}menuLabel.html(label);
-        ${symbol_dollar}menuLabel.parents('a').attr('href', "javascript:" + actionMethodName + "();");
-      }
-
-      function unsubscribe() {
-        ${symbol_dollar}.post('<c:url value="/services/unsubscribe/${componentId}" />', successUnsubscribe(),
-            'json');
-      }
-
-      function subscribe() {
-        ${symbol_dollar}.post('<c:url value="/services/subscribe/${componentId}" />', successSubscribe(), 'json');
-      }
+      SUBSCRIPTION_PROMISE.then(function() {
+        window.spSubManager = new SilverpeasSubscriptionManager({
+          componentInstanceId : '${componentId}', labels : {
+            subscribe : '${silfn:escapeJs(subscribeLabel)}',
+            unsubscribe : '${silfn:escapeJs(unsubscribeLabel)}'
+          }
+        });
+      });
     </script>
-    </script>
-  </head>
-  <body>
-  <view:operationPane>
-    <c:if test="${symbol_dollar}{isUserSubscribed != null}">
-      <c:choose>
-        <c:when test="${symbol_dollar}{isUserSubscribed}">
-          <view:operation altText="<span id='subscriptionMenuLabel'>${symbol_dollar}{unsubscribeLabel}</span>" icon="" action="javascript:unsubscribe();"/>
-        </c:when>
-        <c:otherwise>
-          <view:operation altText="<span id='subscriptionMenuLabel'>${symbol_dollar}{subscribeLabel}</span>" icon="" action="javascript:subscribe();"/>
-        </c:otherwise>
-      </c:choose>
-    </c:if>
-  </view:operationPane>
+  </view:sp-head-part>
+  <view:sp-body-part>
+    <view:browseBar componentId="${componentId}" path="${requestScope.navigationContext}"/>
+    <view:operationPane>
+      <c:if test="${isUserSubscribed != null}">
+        <view:operationSeparator/>
+        <view:operation altText="<span id='subscriptionMenuLabel'></span>" icon="" action="javascript:spSubManager.switchUserSubscription()"/>
+      </c:if>
+    </view:operationPane>
     <view:window>
       <view:frame>
-        Bienvenue sur l'application ${rootArtifactId}.
+        Welcome in ${rootArtifactId}.
       </view:frame>
       <view:frame>
         <view:board>
-          Cette instance s'appelle <span class="${rootArtifactId}Name"><c:out value="${symbol_dollar}{requestScope.browseContext[1]}" /></span>.<br/>
-          Elle se situe dans l'espace <span class="${rootArtifactId}Name"><c:out value="${symbol_dollar}{requestScope.browseContext[0]}" /></span>.
+          This component instance is named
+          <span class="${rootArtifactId}Name"><c:out value="${requestScope.browseContext[1]}"/></span>.<br/>
+          It is in the collaborative space
+          <span class="${rootArtifactId}Name"><c:out value="${requestScope.browseContext[0]}"/></span>.
         </view:board>
       </view:frame>
     </view:window>
-  </body>
-</html>
+  </view:sp-body-part>
+</view:sp-page>

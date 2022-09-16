@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 /*
- * Copyright (C) 2000 - 2018 Silverpeas
+ * Copyright (C) 2000 - 2022 Silverpeas
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -14,7 +14,7 @@
  * Open Source Software ("FLOSS") applications as described in Silverpeas's
  * FLOSS exception.  You should have received a copy of the text describing
  * the FLOSS exception, and it is also available here:
- * "http://www.silverpeas.com/legal/licensing"
+ * "https://www.silverpeas.com/legal/licensing"
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,12 +22,12 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package ${package}.notification;
 
 import org.silverpeas.core.notification.system.AbstractResourceEvent;
-import javax.validation.constraints.NotNull;
+import javax.annotation.Nonnull;
 
 import ${package}.model.${ClassNamePrefix};
 
@@ -42,8 +42,8 @@ public final class ${ClassNamePrefix}Event extends AbstractResourceEvent<${Class
    * @param type the type of the lifecycle event (the type of the transition occurring in the
    * @param contribution the states of a ${ClassNamePrefix} concerned by a state transition.
   */
-  public ${ClassNamePrefix}Event(final Type type,
-    @NotNull final ${ClassNamePrefix}... contribution) {
+  public ${ClassNamePrefix}Event(@Nonnull final Type type,
+    @Nonnull final ${ClassNamePrefix}... contribution) {
       super(type, contribution);
   }
 }

@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 /*
- * Copyright (C) 2000 - 2018 Silverpeas
+ * Copyright (C) 2000 - 2022 Silverpeas
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -14,7 +14,7 @@
  * Open Source Software ("FLOSS") applications as described in Silverpeas's
  * FLOSS exception.  You should have received a copy of the text describing
  * the FLOSS exception, and it is also available here:
- * "http://www.silverpeas.com/legal/licensing"
+ * "https://www.silverpeas.com/legal/licensing"
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,15 +22,15 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package ${package}.repository;
 
+import org.silverpeas.core.annotation.Repository;
 import ${package}.model.${ClassNamePrefix};
 import org.silverpeas.core.persistence.datasource.repository.jpa.NamedParameters;
 import org.silverpeas.core.persistence.datasource.repository.jpa.SilverpeasJpaEntityRepository;
 
-import javax.inject.Singleton;
 import java.util.List;
 
 /**
@@ -39,7 +39,7 @@ import java.util.List;
  * base repository that provides all the basic and necessary methods to save, to update, to delete
  * and to get the business entities by using the JPA engine.
  */
-@Singleton
+@Repository
 public class ${ClassNamePrefix}JpaRepository
     extends SilverpeasJpaEntityRepository<${ClassNamePrefix}>
     implements ${ClassNamePrefix}Repository {
