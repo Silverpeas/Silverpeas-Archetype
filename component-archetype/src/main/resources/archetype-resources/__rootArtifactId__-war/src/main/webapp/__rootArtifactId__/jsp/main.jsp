@@ -41,11 +41,11 @@
 <fmt:message key="${rootArtifactId}.menu.item.subscribe"   var="subscribeLabel"/>
 <fmt:message key="${rootArtifactId}.menu.item.unsubscribe" var="unsubscribeLabel"/>
 
-<c:set var="componentId"      value="${requestScope.browseContext[3]}"/>
-<c:url var="componentUriBase" value="${requestScope.componentUriBase}"/>
-<c:set var="currentUser"      value="${requestScope.currentUser}"/>
-<c:set var="highestUserRole"  value="${requestScope.highestUserRole}"/>
-<c:set var="isUserSubscribed" value="${requestScope.isUserSubscribed}"/>
+<c:set var="componentId"      value="${symbol_dollar}{requestScope.browseContext[3]}"/>
+<c:url var="componentUriBase" value="${symbol_dollar}{requestScope.componentUriBase}"/>
+<c:set var="currentUser"      value="${symbol_dollar}{requestScope.currentUser}"/>
+<c:set var="highestUserRole"  value="${symbol_dollar}{requestScope.highestUserRole}"/>
+<c:set var="isUserSubscribed" value="${symbol_dollar}{requestScope.isUserSubscribed}"/>
 
 <view:sp-page>
   <view:sp-head-part>
@@ -53,18 +53,18 @@
     <script type="application/javascript">
       SUBSCRIPTION_PROMISE.then(function() {
         window.spSubManager = new SilverpeasSubscriptionManager({
-          componentInstanceId : '${componentId}', labels : {
-            subscribe : '${silfn:escapeJs(subscribeLabel)}',
-            unsubscribe : '${silfn:escapeJs(unsubscribeLabel)}'
+          componentInstanceId : '${symbol_dollar}{componentId}', labels : {
+            subscribe : '${symbol_dollar}{silfn:escapeJs(subscribeLabel)}',
+            unsubscribe : '${symbol_dollar}{silfn:escapeJs(unsubscribeLabel)}'
           }
         });
       });
     </script>
   </view:sp-head-part>
   <view:sp-body-part>
-    <view:browseBar componentId="${componentId}" path="${requestScope.navigationContext}"/>
+    <view:browseBar componentId="${symbol_dollar}{componentId}" path="${symbol_dollar}{requestScope.navigationContext}"/>
     <view:operationPane>
-      <c:if test="${isUserSubscribed != null}">
+      <c:if test="${symbol_dollar}{isUserSubscribed != null}">
         <view:operationSeparator/>
         <view:operation altText="<span id='subscriptionMenuLabel'></span>" icon="" action="javascript:spSubManager.switchUserSubscription()"/>
       </c:if>
@@ -76,9 +76,9 @@
       <view:frame>
         <view:board>
           This component instance is named
-          <span class="${rootArtifactId}Name"><c:out value="${requestScope.browseContext[1]}"/></span>.<br/>
+          <span class="${rootArtifactId}Name"><c:out value="${symbol_dollar}{requestScope.browseContext[1]}"/></span>.<br/>
           It is in the collaborative space
-          <span class="${rootArtifactId}Name"><c:out value="${requestScope.browseContext[0]}"/></span>.
+          <span class="${rootArtifactId}Name"><c:out value="${symbol_dollar}{requestScope.browseContext[0]}"/></span>.
         </view:board>
       </view:frame>
     </view:window>

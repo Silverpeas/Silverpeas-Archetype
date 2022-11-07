@@ -76,7 +76,7 @@
     <dependency>
       <groupId>org.silverpeas.core.services</groupId>
       <artifactId>silverpeas-core-comment</artifactId>
-      <version>${symbol_dollar}{project.version}</version>
+      <version>${symbol_dollar}{core.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
